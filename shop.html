@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Shop — PandaStudioX</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐼</text></svg>"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="page-wrap">
+
+<!-- TICKER -->
+<div class="ticker-bar"><div class="ticker-inner" id="ticker"></div></div>
+
+<!-- NAV -->
+<nav class="navbar">
+  <a class="nav-logo" href="index.html"><div class="nav-logo-emoji">🐼</div>PandaStudioX</a>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link active" href="shop.html">Shop</a>
+    <a class="nav-link active" href="shop.html">Categories</a>
+    <a class="nav-link" href="community.html">Community</a>
+    <a class="nav-link" href="blog.html">Blog</a>
+    <a class="nav-link" href="support.html">Contact</a>
+  </div>
+  <div class="nav-search">
+    <input class="search-input" placeholder="Search for products..." autocomplete="off"/>
+    <span class="nav-search-icon">🔍</span>
+    <div class="search-dropdown"></div>
+  </div>
+  <div class="nav-right">
+    <div style="position:relative">
+      <button class="theme-btn" id="theme-toggle-btn"></button>
+      <div class="theme-panel" id="theme-panel"></div>
+    </div>
+    <a href="cart.html" class="cart-btn">🛒<span class="cart-count">0</span></a>
+    <a href="dashboard.html" class="user-btn"><div class="user-avatar">🐼</div><div class="user-info"><div class="user-name">PandaX</div><div class="user-plan">Premium</div></div></a>
+  </div>
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+</nav>
+<nav class="mobile-nav">
+  <a class="mobile-nav-link" href="index.html">🏠 Home</a>
+  <a class="mobile-nav-link active" href="shop.html">🛒 Shop</a>
+  <a class="mobile-nav-link" href="community.html">👥 Community</a>
+  <a class="mobile-nav-link" href="blog.html">📝 Blog</a>
+  <a class="mobile-nav-link" href="dashboard.html">📊 Dashboard</a>
+  <a class="mobile-nav-link" href="cart.html">🛒 Cart</a>
+</nav>
+
+<!-- SHOP LAYOUT: Left Sidebar | Main | Right Filter -->
+<div class="shop-layout">
+
+  <!-- ── LEFT SIDEBAR ── -->
+  <aside class="shop-sidebar-left">
+    <div class="sidebar-heading">Categories</div>
+    <div class="cat-list" id="cat-list"></div>
+
+    <!-- Become Seller CTA -->
+    <div class="become-seller-card" style="margin-top:20px">
+      <h4>Become a Seller</h4>
+      <p>Start selling your digital products and earn with PandaStudioX.</p>
+      <button class="btn btn-primary btn-sm btn-block" onclick="showToast({icon:'🚀',title:'Seller Program',desc:'Sign up to start selling!'})">Start Selling →</button>
+    </div>
+  </aside>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="shop-main">
+    <!-- Sort bar -->
+    <div class="sort-bar">
+      <span class="sort-label">Sort by:</span>
+      <select class="sort-select-styled" id="sort-select">
+        <option value="popular">Popular</option>
+        <option value="newest">Newest</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="rating">Top Rated</option>
+        <option value="sales">Best Selling</option>
+      </select>
+      <select class="sort-select-styled" id="price-select">
+        <option value="">Price: All</option>
+        <option value="0-199">Under ₹199</option>
+        <option value="200-499">₹200 – ₹499</option>
+        <option value="500-999">₹500 – ₹999</option>
+        <option value="1000+">₹1,000+</option>
+      </select>
+      <select class="sort-select-styled" id="rating-select">
+        <option value="">Rating: All</option>
+        <option value="4.5">4.5+ Stars</option>
+        <option value="4.0">4.0+ Stars</option>
+        <option value="3.5">3.5+ Stars</option>
+      </select>
+      <select class="sort-select-styled" id="type-select">
+        <option value="">All Types</option>
+        <option value="single">Single Product</option>
+        <option value="bundle">Bundle</option>
+        <option value="subscription">Subscription</option>
+      </select>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:8px;flex-shrink:0">
+        <span class="products-found"><span id="products-found-count">12</span> Products Found</span>
+        <div class="view-toggle">
+          <button class="view-btn active" id="view-grid" onclick="setView('grid')" title="Grid view">⊞</button>
+          <button class="view-btn" id="view-list" onclick="setView('list')" title="List view">☰</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products grid -->
+    <div class="products-grid" id="products-grid"></div>
+
+    <!-- Pagination -->
+    <div style="display:flex;justify-content:center;align-items:center;gap:8px;margin-top:32px;flex-wrap:wrap" id="pagination"></div>
+  </main>
+
+  <!-- ── RIGHT FILTER SIDEBAR ── -->
+  <aside class="shop-sidebar-right">
+    <div class="filter-heading">Filter Products</div>
+
+    <div class="filter-section">
+      <div class="filter-title">Price Range</div>
+      <input type="range" id="price-range" min="0" max="2000" value="2000" oninput="document.getElementById('price-max-val').textContent='₹'+this.value"/>
+      <div class="price-range-inputs">
+        <input class="price-input" value="₹0" readonly style="background:var(--surface)"/>
+        <span class="price-sep">—</span>
+        <input class="price-input" id="price-max-val" value="₹2000" readonly style="background:var(--surface)"/>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title">Product Type</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <label class="checkbox-wrap"><input type="checkbox" checked/><span class="checkbox-label">All Types</span></label>
+        <label class="checkbox-wrap"><input type="checkbox"/><span class="checkbox-label">Single Product</span></label>
+        <label class="checkbox-wrap"><input type="checkbox"/><span class="checkbox-label">Bundle</span></label>
+        <label class="checkbox-wrap"><input type="checkbox"/><span class="checkbox-label">Subscription</span></label>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title">Rating</div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <label class="rating-filter-item"><input type="radio" name="rfilter"/><span class="stars">★★★★★</span><span class="r-count">(245)</span></label>
+        <label class="rating-filter-item"><input type="radio" name="rfilter"/><span class="stars">★★★★</span><span class="stars" style="color:var(--border2)">★</span><span class="r-count">(512)</span></label>
+        <label class="rating-filter-item"><input type="radio" name="rfilter"/><span class="stars">★★★</span><span class="stars" style="color:var(--border2)">★★</span><span class="r-count">(312)</span></label>
+        <label class="rating-filter-item"><input type="radio" name="rfilter"/><span class="stars">★★</span><span class="stars" style="color:var(--border2)">★★★</span><span class="r-count">(125)</span></label>
+        <label class="rating-filter-item"><input type="radio" name="rfilter"/><span class="stars">★</span><span class="stars" style="color:var(--border2)">★★★★</span><span class="r-count">(52)</span></label>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-block" onclick="applyFilters()">Apply Filters</button>
+    <button class="btn btn-secondary btn-block" style="margin-top:8px" onclick="resetFilters()">Reset All</button>
+  </aside>
+
+</div><!-- end shop-layout -->
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-inner">
+  <div class="footer-grid">
+    <div><div class="footer-brand-logo"><div class="footer-brand-emoji">🐼</div>PandaStudioX</div><p class="footer-desc">The premium digital marketplace for creators worldwide.</p><div class="footer-socials"><button class="footer-social">💬</button><button class="footer-social">🐦</button><button class="footer-social">📺</button></div></div>
+    <div><div class="footer-col-title">Shop</div><div class="footer-links"><a class="footer-link" href="shop.html">All Products</a><a class="footer-link" href="#">Thumbnails</a><a class="footer-link" href="#">Gaming</a><a class="footer-link" href="#">Templates</a></div></div>
+    <div><div class="footer-col-title">Sellers</div><div class="footer-links"><a class="footer-link" href="#">Start Selling</a><a class="footer-link" href="#">Revenue Split</a><a class="footer-link" href="#">Payouts</a></div></div>
+    <div><div class="footer-col-title">Help</div><div class="footer-links"><a class="footer-link" href="support.html">Support</a><a class="footer-link" href="#">Terms</a><a class="footer-link" href="#">Privacy</a></div></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 PandaStudioX. All rights reserved.</div><div class="footer-version">v3.0</div></div>
+</div>
+</footer>
+</div>
+<div class="toast-container" id="toast-container"></div>
+<button class="scroll-top" id="scroll-top">↑</button>
+<script src="js/script.js"></script>
+<script>
+// Ticker
+const tickerEl = document.getElementById('ticker');
+const items = ['🔥 Flash Sale: 50% off Thumbnails!','⭐ New: Minecraft Map Bundle v2','💰 Sellers earn 90% — Join now','🆕 1246 products and counting','🏆 Top rated digital marketplace'];
+tickerEl.innerHTML = [0,1].map(()=>items.map(t=>`<div class="ticker-item">${t}<div class="ticker-dot"></div></div>`).join('')).join('');
+
+// Categories
+const CATS = [
+  {icon:'🗂️',name:'All Products',count:1246,val:'all'},
+  {icon:'🎮',name:'Thumbnails',count:356,val:'Thumbnails'},
+  {icon:'🕹️',name:'Games',count:128,val:'Games'},
+  {icon:'⛏️',name:'Minecraft',count:156,val:'Minecraft'},
+  {icon:'🎲',name:'Roblox',count:98,val:'Roblox'},
+  {icon:'🎨',name:'Graphics',count:204,val:'Graphics'},
+  {icon:'💬',name:'Discord',count:76,val:'Discord'},
+  {icon:'💻',name:'Source Code',count:112,val:'Source Code'},
+  {icon:'🤖',name:'AI Tools',count:56,val:'AI Tools'},
+  {icon:'📚',name:'Templates',count:60,val:'Templates'},
+  {icon:'🖥️',name:'UI Kits',count:44,val:'UI Kits'},
+];
+let activeCategory = 'all';
+function buildCatList() {
+  document.getElementById('cat-list').innerHTML = CATS.map(c=>`
+    <div class="cat-item ${activeCategory===c.val?'active':''}" onclick="selectCategory('${c.val}',this)">
+      <span class="cat-item-icon">${c.icon}</span>
+      ${c.name}
+      <span class="cat-item-count">${c.count}</span>
+    </div>`).join('');
+}
+function selectCategory(val, el) {
+  activeCategory = val;
+  document.querySelectorAll('.cat-item').forEach(i=>i.classList.remove('active'));
+  el.classList.add('active');
+  renderProducts();
+}
+buildCatList();
+
+// All products
+const ALL_PRODUCTS = [
+  {id:'gtp',  icon:'🎮', bg:'thumb-gaming',    title:'Gaming Thumbnail Pack',    cat:'Thumbnails',   price:299,  orig:499,  badge:'sale',       rating:4.8, reviews:142, sales:320},
+  {id:'mmb',  icon:'⛏️', bg:'thumb-minecraft', title:'Minecraft Map Bundle',     cat:'Minecraft',    price:499,  orig:null, badge:'new',        rating:4.7, reviews:89,  sales:210},
+  {id:'dbp',  icon:'💬', bg:'thumb-discord',   title:'Discord Bot Premium',      cat:'Discord',      price:499,  orig:null, badge:null,         rating:4.7, reviews:56,  sales:180},
+  {id:'ytp',  icon:'📺', bg:'thumb-youtube',   title:'YouTube Thumbnail Pack',   cat:'Thumbnails',   price:349,  orig:null, badge:null,         rating:4.6, reviews:231, sales:290},
+  {id:'rgfx', icon:'🎲', bg:'thumb-roblox',    title:'Roblox GFX Pack',          cat:'Roblox',       price:399,  orig:699,  badge:'sale',       rating:4.6, reviews:78,  sales:150},
+  {id:'muik', icon:'🖥️', bg:'thumb-ui',        title:'Modern UI Kit',            cat:'UI Kits',      price:599,  orig:null, badge:'bestseller', rating:4.9, reviews:112, sales:400},
+  {id:'aig',  icon:'🤖', bg:'thumb-gaming',    title:'AI Image Generator',       cat:'AI Tools',     price:699,  orig:null, badge:null,         rating:4.7, reviews:67,  sales:120},
+  {id:'gdc',  icon:'🕹️', bg:'thumb-course',    title:'Game Dev Course',          cat:'Games',        price:1499, orig:null, badge:'hot',        rating:4.8, reviews:156, sales:340},
+  {id:'pop',  icon:'📡', bg:'thumb-overlay',   title:'Premium Overlays Pack',    cat:'Graphics',     price:299,  orig:599,  badge:'sale',       rating:4.6, reviews:45,  sales:90},
+  {id:'wtp',  icon:'🌐', bg:'thumb-pack',      title:'Website Template Pack',    cat:'Templates',    price:499,  orig:null, badge:null,         rating:4.8, reviews:93,  sales:220},
+  {id:'mctp', icon:'⛏️', bg:'thumb-minecraft', title:'Minecraft Texture Pack',   cat:'Minecraft',    price:249,  orig:null, badge:'new',        rating:4.9, reviews:205, sales:510},
+  {id:'twitch',icon:'🎙️',bg:'thumb-twitch',   title:'Twitch Overlay Bundle',    cat:'Graphics',     price:349,  orig:699,  badge:'sale',       rating:4.7, reviews:88,  sales:175},
+];
+
+const BADGE_CLASS = {sale:'badge-sale',new:'badge-new',hot:'badge-hot',bestseller:'badge-bestseller'};
+
+let currentView = 'grid';
+function setView(v) {
+  currentView = v;
+  document.getElementById('view-grid').classList.toggle('active', v==='grid');
+  document.getElementById('view-list').classList.toggle('active', v==='list');
+  renderProducts();
+}
+
+function renderProducts() {
+  let prods = ALL_PRODUCTS.filter(p => activeCategory==='all' || p.cat===activeCategory);
+  const sort = document.getElementById('sort-select').value;
+  if (sort==='price-asc') prods.sort((a,b)=>a.price-b.price);
+  else if (sort==='price-desc') prods.sort((a,b)=>b.price-a.price);
+  else if (sort==='rating') prods.sort((a,b)=>b.rating-a.rating);
+  else if (sort==='sales') prods.sort((a,b)=>b.sales-a.sales);
+  document.getElementById('products-found-count').textContent = prods.length;
+  const grid = document.getElementById('products-grid');
+  grid.className = currentView==='list' ? 'products-grid list' : 'products-grid';
+  grid.innerHTML = prods.map(p=>`
+    <div class="product-card ${currentView==='list'?'list-view':''} reveal" onclick="window.location='product.html?id=${p.id}'">
+      <div class="prod-thumb" style="height:${currentView==='list'?'auto':'175px'}">
+        <div class="prod-thumb-inner ${p.bg}" style="${currentView==='list'?'min-height:110px':''}">
+          <div class="thumb-glow"></div>
+          <div class="thumb-grid-lines"></div>
+          <span class="thumb-icon">${p.icon}</span>
+          ${currentView!=='list'?`<div class="thumb-title">${p.title}</div>`:''}
+          ${p.badge?`<div class="thumb-tag"><span class="badge ${BADGE_CLASS[p.badge]||''}">${p.badge.toUpperCase()}</span></div>`:''}
+          <div class="thumb-rating-overlay">⭐ ${p.rating}</div>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-title">${p.title}</div>
+        <div class="product-rating">
+          <span class="stars">${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5-Math.floor(p.rating))}</span>
+          <span class="rating-num">${p.rating}</span>
+          <span class="rating-count">(${p.reviews})</span>
+          <span style="margin-left:auto;font-size:11px;color:var(--muted)">🛒 ${p.sales}+</span>
+        </div>
+        <div class="product-price-row">
+          <div>
+            <span class="product-price">₹${p.price}</span>
+            ${p.orig?`<span class="product-original">₹${p.orig}</span>`:''}
+          </div>
+          ${p.orig?`<span class="badge badge-sale">-${Math.round((1-p.price/p.orig)*100)}%</span>`:''}
+        </div>
+        <div class="product-actions">
+          <button class="btn btn-primary btn-sm" style="flex:1" onclick="event.stopPropagation();addToCart('${p.id}','${p.title}',${p.price},'${p.icon}','${p.cat}')">Add to Cart</button>
+          <button class="btn btn-secondary btn-sm btn-icon" onclick="event.stopPropagation();toggleWishlist('${p.id}',this)" title="Wishlist">${isWishlisted('${p.id}')?'❤️':'🤍'}</button>
+        </div>
+      </div>
+    </div>`).join('');
+
+  // Pagination
+  const pages = Math.ceil(prods.length / 10) || 1;
+  document.getElementById('pagination').innerHTML = Array.from({length:Math.min(pages+2,6)},(_,i)=>{
+    if(i===0) return `<button class="btn btn-secondary btn-sm" onclick="showToast({icon:'◀',title:'Previous',desc:''})">◀</button>`;
+    if(i===Math.min(pages+2,6)-1) return `<button class="btn btn-secondary btn-sm" onclick="showToast({icon:'▶',title:'Next',desc:''})">▶</button>`;
+    const p=i;
+    return `<button class="${p===1?'btn btn-primary':'btn btn-secondary'} btn-sm" style="min-width:36px" onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.className=b.className.replace('btn-primary','btn-secondary'));this.className=this.className.replace('btn-secondary','btn-primary')">${p}</button>`;
+  }).join('');
+
+  setTimeout(()=>initReveal(),50);
+}
+
+document.getElementById('sort-select').addEventListener('change', renderProducts);
+renderProducts();
+
+function applyFilters() {
+  showToast({icon:'🔍',title:'Filters Applied',desc:'Showing filtered results'});
+  renderProducts();
+}
+function resetFilters() {
+  activeCategory='all';
+  buildCatList();
+  document.getElementById('price-range').value=2000;
+  document.getElementById('price-max-val').textContent='₹2000';
+  document.querySelectorAll('#cat-list .cat-item').forEach((el,i)=>{if(i===0)el.classList.add('active');else el.classList.remove('active')});
+  renderProducts();
+  showToast({icon:'🔄',title:'Filters Reset',desc:'Showing all products'});
+}
+</script>
+</body>
+</html>
