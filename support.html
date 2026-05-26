@@ -1,251 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<html lang="en" data-theme="dark">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Support — PandaStudioX</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>"/>
-<link rel="stylesheet" href="css/style.css"/>
-</head>
-<body>
-<canvas id="bg-canvas"></canvas>
-<div class="page-wrap">
-<div class="ticker-bar"><div class="ticker-inner" id="ticker"></div></div>
-<nav class="navbar">
-  <a class="nav-logo" href="index.html"><div class="nav-logo-emoji">🐼</div>PandaStudioX</a>
-  <div class="nav-links">
-    <a class="nav-link" href="index.html">Home</a>
-    <a class="nav-link" href="shop.html">Shop</a>
-    <a class="nav-link" href="community.html">Community</a>
-    <a class="nav-link" href="blog.html">Blog</a>
-    <a class="nav-link active" href="support.html">Contact</a>
-  </div>
-  <div class="nav-search"><input class="search-input" placeholder="Search for help..." autocomplete="off"/><span class="nav-search-icon">🔍</span><div class="search-dropdown"></div></div>
-  <div class="nav-right">
-    <div style="position:relative"><button class="theme-btn" id="theme-toggle-btn"></button><div class="theme-panel" id="theme-panel"></div></div>
-    <a href="cart.html" class="cart-btn">🛒<span class="cart-count">0</span></a>
-    <a href="dashboard.html" class="user-btn"><div class="user-avatar">🐼</div><div class="user-info"><div class="user-name">PandaX</div><div class="user-plan">Premium</div></div></a>
-  </div>
-  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+<link rel="stylesheet" href="css/style.css"/></head>
+<body><canvas id="bg-canvas"></canvas><div class="page">
+<div class="ticker"><div class="ticker-track" id="ticker-track"></div></div>
+<nav class="nav">
+  <a class="nav-logo" href="index.html"><div class="logo-icon">🐼</div>PandaStudioX</a>
+  <div class="nav-links"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="shop.html">Shop</a><a class="nav-link" href="community.html">Community</a><a class="nav-link" href="blog.html">Blog</a><a class="nav-link" href="support.html">Contact</a></div>
+  <div class="nav-search"><input class="nav-search-input" placeholder="Search for help..." autocomplete="off"/><span class="nav-search-icon">🔍</span><div class="search-drop"></div></div>
+  <div class="nav-right"><div style="position:relative"><button class="theme-btn"></button><div class="theme-panel" id="theme-panel"></div></div><a href="cart.html" class="cart-btn">🛒<span class="cart-n">0</span></a><a href="dashboard.html" class="user-btn"><div class="u-avatar">🐼</div><div><div class="u-name">PandaX</div><div class="u-plan">Premium</div></div></a></div>
+  <button class="mob-btn">☰</button>
 </nav>
-<nav class="mobile-nav">
-  <a class="mobile-nav-link" href="index.html">🏠 Home</a>
-  <a class="mobile-nav-link" href="shop.html">🛒 Shop</a>
-  <a class="mobile-nav-link active" href="support.html">💬 Support</a>
-</nav>
+<nav class="mob-nav"><a class="mob-link" href="index.html">🏠 Home</a><a class="mob-link" href="shop.html">🛒 Shop</a><a class="mob-link active" href="support.html">💬 Support</a></nav>
 
-<!-- HERO -->
 <div class="page-hero" style="text-align:center">
-  <div style="max-width:680px;margin:0 auto">
-    <span class="section-label">We're Here to Help</span>
-    <h1 style="font-family:var(--font2);font-size:clamp(28px,5vw,54px);font-weight:900;letter-spacing:-1.5px;margin-bottom:14px" class="fade-up">Help <span style="color:var(--accent)">Center</span></h1>
-    <p style="font-size:16px;color:var(--text2);margin-bottom:28px;line-height:1.65" class="fade-up-1">Find answers, contact support, or check our FAQ. We respond within 24 hours.</p>
-    <div class="nav-search fade-up-2" style="max-width:500px;margin:0 auto;position:relative">
-      <input class="form-input" placeholder="Search help articles..." style="width:100%;padding:14px 50px 14px 18px;font-size:15px;border-radius:12px"/>
-      <span style="position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--muted)">🔍</span>
-    </div>
+<div class="page-hero-inner" style="max-width:660px;margin:0 auto;text-align:center">
+  <span class="sec-label fu">We're Here to Help</span>
+  <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,5vw,50px);font-weight:900;letter-spacing:-1.8px;margin-bottom:12px" class="fu1">Help <span style="color:var(--accent)">Center</span></h1>
+  <p style="font-size:15.5px;color:var(--text2);margin-bottom:26px;line-height:1.65" class="fu2">Find answers, contact support or check our FAQ. We respond within 24 hours.</p>
+  <div class="fu3" style="position:relative;max-width:480px;margin:0 auto">
+    <input class="f-input" id="help-search" placeholder="Search help articles..." style="padding:13px 48px 13px 16px;font-size:15px;border-radius:12px;width:100%"/>
+    <span style="position:absolute;right:15px;top:50%;transform:translateY(-50%);font-size:19px;color:var(--muted);pointer-events:none">🔍</span>
   </div>
+</div>
 </div>
 
 <!-- SUPPORT OPTIONS -->
-<section class="section" style="padding-top:48px">
-<div class="section-inner">
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-bottom:64px" id="support-options"></div>
+<section class="sec" style="padding-top:44px">
+<div class="sec-inner">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin-bottom:56px" id="support-opts"></div>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start">
-
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start">
     <!-- FAQ -->
     <div>
-      <div class="section-header reveal">
-        <span class="section-label">Common Questions</span>
-        <h2 class="section-title">FAQ</h2>
+      <div class="sec-hdr reveal"><span class="sec-label">Common Questions</span><h2 class="sec-title">FAQ</h2></div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px" class="reveal" id="faq-cats">
+        <button class="btn btn-primary btn-sm" onclick="filterFAQ('all',this)">All</button>
+        <button class="btn btn-secondary btn-sm" onclick="filterFAQ('buying',this)">Buying</button>
+        <button class="btn btn-secondary btn-sm" onclick="filterFAQ('selling',this)">Selling</button>
+        <button class="btn btn-secondary btn-sm" onclick="filterFAQ('account',this)">Account</button>
+        <button class="btn btn-secondary btn-sm" onclick="filterFAQ('payment',this)">Payment</button>
       </div>
-
-      <!-- FAQ Categories -->
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px" class="reveal">
-        <button class="btn btn-primary btn-sm" onclick="filterFaq('all',this)">All</button>
-        <button class="btn btn-secondary btn-sm" onclick="filterFaq('buying',this)">Buying</button>
-        <button class="btn btn-secondary btn-sm" onclick="filterFaq('selling',this)">Selling</button>
-        <button class="btn btn-secondary btn-sm" onclick="filterFaq('account',this)">Account</button>
-        <button class="btn btn-secondary btn-sm" onclick="filterFaq('payment',this)">Payment</button>
-      </div>
-
-      <div id="faq-container" class="reveal"></div>
+      <div id="faq-list" class="reveal"></div>
     </div>
 
-    <!-- Contact Form -->
+    <!-- CONTACT FORM -->
     <div class="reveal">
-      <div class="section-header">
-        <span class="section-label">Get in Touch</span>
-        <h2 class="section-title">Contact Support</h2>
-        <p class="section-sub" style="max-width:none">Fill in the form below and we'll get back to you within 24 hours.</p>
-      </div>
-
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px">
-        <div class="form-group">
-          <label class="form-label">Your Name</label>
-          <input class="form-input" id="cf-name" placeholder="PandaX"/>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input class="form-input" id="cf-email" type="email" placeholder="you@example.com"/>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Category</label>
-          <select class="form-input form-select" id="cf-cat">
-            <option>Product Issue</option>
-            <option>Payment Problem</option>
-            <option>Seller Support</option>
-            <option>Account Help</option>
-            <option>Refund Request</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Order ID (optional)</label>
-          <input class="form-input" id="cf-order" placeholder="e.g. PSX-2026-001234"/>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-input" id="cf-msg" placeholder="Describe your issue in detail..." style="min-height:120px;resize:vertical"></textarea>
-        </div>
+      <div class="sec-hdr"><span class="sec-label">Get in Touch</span><h2 class="sec-title">Contact Support</h2><p class="sec-sub" style="max-width:none">Fill the form below and we'll reply within 24 hours.</p></div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:24px">
+        <div class="f-group"><label class="f-label">Your Name *</label><input class="f-input" id="cf-name" placeholder="PandaX"/></div>
+        <div class="f-group"><label class="f-label">Email Address *</label><input class="f-input" id="cf-email" type="email" placeholder="you@example.com"/></div>
+        <div class="f-group"><label class="f-label">Category</label><select class="f-input f-select" id="cf-cat"><option>Product Issue</option><option>Payment Problem</option><option>Seller Support</option><option>Account Help</option><option>Refund Request</option><option>Other</option></select></div>
+        <div class="f-group"><label class="f-label">Order ID (optional)</label><input class="f-input" id="cf-order" placeholder="e.g. PSX-2026-001234"/></div>
+        <div class="f-group"><label class="f-label">Message *</label><textarea class="f-input" id="cf-msg" placeholder="Describe your issue in detail..." style="min-height:110px;resize:vertical"></textarea></div>
         <button class="btn btn-primary btn-block btn-lg" onclick="submitForm()">Send Message →</button>
-        <div style="text-align:center;font-size:12.5px;color:var(--muted);margin-top:12px">Average response time: 4–8 hours</div>
+        <div style="text-align:center;font-size:12.5px;color:var(--muted);margin-top:10px">Average response time: 4–8 hours</div>
       </div>
-
-      <!-- Social links -->
-      <div style="margin-top:20px;padding:20px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg)">
-        <div style="font-weight:800;font-size:14.5px;margin-bottom:14px;font-family:var(--font2)">Other Ways to Reach Us</div>
-        <div style="display:flex;flex-direction:column;gap:10px" id="contact-channels"></div>
+      <!-- Contact channels -->
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:18px;margin-top:16px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:14px;margin-bottom:13px">Other Ways to Reach Us</div>
+        <div id="channels"></div>
       </div>
     </div>
-
   </div>
 </div>
 </section>
 
-<!-- STATUS -->
-<section class="section" style="background:var(--bg2);border-top:1px solid var(--border)">
-<div class="section-inner">
-  <div class="section-header center reveal">
-    <span class="section-label">System Status</span>
-    <h2 class="section-title">All Systems <span style="color:var(--accent3)">Operational ✅</span></h2>
-  </div>
-  <div style="max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:10px" id="status-items"></div>
+<!-- SYSTEM STATUS -->
+<section class="sec section-alt">
+<div class="sec-inner">
+  <div class="sec-hdr center reveal"><span class="sec-label">System Status</span><h2 class="sec-title">All Systems <span style="color:var(--accent3)">Operational ✅</span></h2></div>
+  <div style="max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:9px" id="status-list"></div>
 </div>
 </section>
 
-<footer class="footer">
-<div class="footer-inner">
-  <div class="footer-grid">
-    <div><div class="footer-brand-logo"><div class="footer-brand-emoji">🐼</div>PandaStudioX</div><p class="footer-desc">The premium digital marketplace for creators.</p><div class="footer-socials"><button class="footer-social">💬</button><button class="footer-social">🐦</button><button class="footer-social">📺</button></div></div>
-    <div><div class="footer-col-title">Help</div><div class="footer-links"><a class="footer-link" href="#">Help Center</a><a class="footer-link" href="#">FAQ</a><a class="footer-link" href="#">Refund Policy</a><a class="footer-link" href="#">Disputes</a></div></div>
-    <div><div class="footer-col-title">Platform</div><div class="footer-links"><a class="footer-link" href="shop.html">Marketplace</a><a class="footer-link" href="community.html">Community</a><a class="footer-link" href="blog.html">Blog</a></div></div>
-    <div><div class="footer-col-title">Legal</div><div class="footer-links"><a class="footer-link" href="#">Terms of Service</a><a class="footer-link" href="#">Privacy Policy</a><a class="footer-link" href="#">License Terms</a><a class="footer-link" href="#">Cookie Policy</a></div></div>
-  </div>
-  <div class="footer-bottom"><div class="footer-copy">© 2026 PandaStudioX. All rights reserved.</div><div class="footer-version">v3.0</div></div>
+<footer class="footer"><div class="footer-inner"><div class="footer-grid"><div><div class="footer-logo"><div class="footer-logo-icon">🐼</div>PandaStudioX</div><p class="footer-desc">The premium digital marketplace for creators.</p><div class="footer-socials"><button class="footer-social">💬</button><button class="footer-social">🐦</button><button class="footer-social">📺</button></div></div><div><div class="footer-col-title">Help</div><div class="footer-links"><a class="footer-link" href="#">Help Center</a><a class="footer-link" href="#">FAQ</a><a class="footer-link" href="#">Refund Policy</a><a class="footer-link" href="#">Disputes</a></div></div><div><div class="footer-col-title">Platform</div><div class="footer-links"><a class="footer-link" href="shop.html">Marketplace</a><a class="footer-link" href="community.html">Community</a><a class="footer-link" href="blog.html">Blog</a></div></div><div><div class="footer-col-title">Legal</div><div class="footer-links"><a class="footer-link" href="#">Terms of Service</a><a class="footer-link" href="#">Privacy Policy</a><a class="footer-link" href="#">License Terms</a><a class="footer-link" href="#">Cookie Policy</a></div></div></div><div class="footer-bottom"><div class="footer-copy">© 2026 PandaStudioX. All rights reserved.</div><div style="font-size:12px;color:var(--muted2)">v4.0</div></div></div></footer>
 </div>
-</footer>
-</div>
-<div class="toast-container" id="toast-container"></div>
-<button class="scroll-top" id="scroll-top">↑</button>
-<script src="js/script.js"></script>
+<div class="toast-box" id="toast-box"></div>
+<button class="scroll-top-btn" id="scrollTopBtn">↑</button>
+<script src="js/app.js"></script>
 <script>
-const tickerEl=document.getElementById('ticker');
-tickerEl.innerHTML=[0,1].map(()=>['💬 24/7 support via Discord & email','⚡ Average response time: 4 hours','🔒 Secure refund policy'].map(t=>`<div class="ticker-item">${t}<div class="ticker-dot"></div></div>`).join('')).join('');
-
-// Support options
-const SUPPORT_OPTS=[
-  {icon:'💬',title:'Live Chat',desc:'Chat with our support team on Discord right now.',btn:'Open Discord',action:"showToast({icon:'💬',title:'Discord',desc:'Opening Discord support channel!'})"},
-  {icon:'📧',title:'Email Support',desc:'Send us an email and get a reply within 4–8 hours.',btn:'Send Email',action:"showToast({icon:'📧',title:'Email',desc:'support@pandastudiox.com'})"},
-  {icon:'📚',title:'Help Articles',desc:'Browse 200+ help articles and step-by-step guides.',btn:'Browse Articles',action:"showToast({icon:'📚',title:'Help Center',desc:'Help articles coming soon!'})"},
-  {icon:'🎮',title:'Discord Server',desc:'Join 12,000+ members and get help from the community.',btn:'Join Discord',action:"showToast({icon:'🎮',title:'Discord',desc:'Joining community server!'})"},
-];
-document.getElementById('support-options').innerHTML=SUPPORT_OPTS.map(s=>`
-  <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px;text-align:center;transition:all .3s;cursor:pointer" class="reveal" onmouseover="this.style.borderColor='rgba(var(--accent-rgb),.4)';this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-    <div style="font-size:40px;margin-bottom:14px">${s.icon}</div>
-    <div style="font-weight:800;font-size:15px;margin-bottom:7px;font-family:var(--font2)">${s.title}</div>
-    <div style="font-size:13.5px;color:var(--muted);margin-bottom:18px;line-height:1.55">${s.desc}</div>
-    <button class="btn btn-primary btn-sm btn-block" onclick="${s.action}">${s.btn}</button>
-  </div>`).join('');
-
-// FAQ data
-const FAQS=[
-  {q:'How do I download my purchased products?',a:'After completing your purchase, go to Dashboard → Downloads. All your files are available instantly. You will also receive an email with download links.',cat:'buying'},
-  {q:'Can I get a refund on a digital product?',a:'Yes! We offer a 7-day money-back guarantee. If the product doesn\'t work as described, contact support within 7 days of purchase for a full refund, no questions asked.',cat:'buying'},
-  {q:'How do I start selling on PandaStudioX?',a:'Go to Dashboard → Seller Panel and click "Become a Seller". You\'ll need to verify your identity and set up a payment method. You can upload your first product within minutes.',cat:'selling'},
+buildTicker(['💬 24/7 support via Discord & email','⚡ Average response time: 4 hours','🔒 Secure refund policy']);
+const SOPTS=[{icon:'💬',title:'Live Chat',desc:'Chat with our support team on Discord right now.',btn:'Open Discord',fn:"showToast('💬','Discord','Opening Discord support channel!')"},{icon:'📧',title:'Email Support',desc:'Send us an email and get a reply within 4–8 hours.',btn:'Send Email',fn:"showToast('📧','Email','support@pandastudiox.com')"},{icon:'📚',title:'Help Articles',desc:'Browse 200+ help articles and step-by-step guides.',btn:'Browse Articles',fn:"showToast('📚','Help','Help articles coming soon!')"},{icon:'🎮',title:'Discord Server',desc:'Join 12,000+ members and get community help.',btn:'Join Discord',fn:"showToast('🎮','Discord','Joining community server!')"}];
+document.getElementById('support-opts').innerHTML=SOPTS.map(s=>`<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:24px;text-align:center;transition:all .26s;cursor:pointer" class="reveal" onmouseover="this.style.borderColor='rgba(var(--accent-rgb),.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''"><div style="font-size:38px;margin-bottom:12px">${s.icon}</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:14.5px;margin-bottom:7px">${s.title}</div><div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.55">${s.desc}</div><button class="btn btn-primary btn-sm btn-block" onclick="${s.fn}">${s.btn}</button></div>`).join('');
+const ALL_FAQS=[
+  {q:'How do I download my purchased products?',a:'After purchase, go to Dashboard → Downloads. All files are available instantly. You will also receive an email with download links.',cat:'buying'},
+  {q:'Can I get a refund on a digital product?',a:"Yes! We offer a 7-day money-back guarantee. If the product doesn't work as described, contact support within 7 days for a full refund, no questions asked.",cat:'buying'},
+  {q:'How do I start selling on PandaStudioX?',a:"Go to Dashboard → Seller Panel and click 'Become a Seller'. Verify your identity, set up a payment method, and upload your first product within minutes.",cat:'selling'},
   {q:'What is the revenue share for sellers?',a:'Sellers keep 90% of every sale. PandaStudioX takes only 10% as a platform fee — one of the lowest in the industry. Payouts are processed within 48 hours.',cat:'selling'},
-  {q:'How long do payouts take?',a:'Payouts are processed within 48 hours of requesting withdrawal. You can withdraw via UPI (India), Stripe, or PayPal. Minimum withdrawal amount is ₹500.',cat:'payment'},
-  {q:'What payment methods are supported?',a:'We support UPI, Paytm, PhonePe, Razorpay (India), Stripe, PayPal (Global), and cryptocurrency payments. All transactions are SSL encrypted.',cat:'payment'},
-  {q:'How do I change my account email?',a:'Go to Dashboard → Settings → Profile Information. Enter your new email and click Save Changes. A verification email will be sent to confirm the change.',cat:'account'},
-  {q:'Can I use products for commercial purposes?',a:'It depends on the license. Standard License covers personal and commercial use (YouTube, Twitch, client work). Extended License covers agency/reseller use. Check each product page for details.',cat:'buying'},
-  {q:'What file formats do products come in?',a:'Most products come as ZIP archives containing PSD, PNG, PDF, MP4, or source files depending on the product type. File details are listed on each product page.',cat:'buying'},
-  {q:'How do I report a seller or fake product?',a:'Click the "Report" button on any product page or contact support@pandastudiox.com. Our team reviews all reports within 24 hours.',cat:'account'},
+  {q:'How long do payouts take?',a:'Payouts are processed within 48 hours of requesting withdrawal. You can withdraw via UPI (India), Stripe, or PayPal. Minimum withdrawal is ₹500.',cat:'payment'},
+  {q:'What payment methods are supported?',a:'We support UPI, Paytm, PhonePe, Razorpay (India), Stripe, PayPal (Global), and cryptocurrency. All transactions are SSL encrypted.',cat:'payment'},
+  {q:'How do I change my account email?',a:'Go to Dashboard → Settings → Profile Information. Enter your new email and click Save Changes. A verification email will be sent to confirm.',cat:'account'},
+  {q:'Can I use products for commercial purposes?',a:"It depends on the license. Standard License covers personal and commercial use (YouTube, Twitch, client work). Extended License covers agency/reseller use. Check each product page's details.",cat:'buying'},
+  {q:'What file formats do products come in?',a:'Most products come as ZIP archives containing PSD, PNG, PDF, MP4, or source files. Exact file details are listed on each product page.',cat:'buying'},
+  {q:'How do I report a fake product or bad seller?',a:'Click the Report button on any product page or email support@pandastudiox.com. Our team reviews all reports within 24 hours.',cat:'account'},
 ];
-
 let activeFaqCat='all';
-function filterFaq(cat,btn){
+function filterFAQ(cat,btn){
   activeFaqCat=cat;
-  btn.parentElement.querySelectorAll('button').forEach(b=>{b.className='btn btn-secondary btn-sm';});
+  document.getElementById('faq-cats').querySelectorAll('button').forEach(b=>{b.className='btn btn-secondary btn-sm';});
   btn.className='btn btn-primary btn-sm';
-  renderFaq();
+  renderFAQ();
 }
-function renderFaq(){
-  const filtered=activeFaqCat==='all'?FAQS:FAQS.filter(f=>f.cat===activeFaqCat);
-  document.getElementById('faq-container').innerHTML=filtered.map(f=>`
-    <div class="faq-item">
-      <div class="faq-q">${f.q}<span class="faq-arrow">▾</span></div>
-      <div class="faq-a"><p>${f.a}</p></div>
-    </div>`).join('');
+function renderFAQ(){
+  const filtered=activeFaqCat==='all'?ALL_FAQS:ALL_FAQS.filter(f=>f.cat===activeFaqCat);
+  document.getElementById('faq-list').innerHTML=filtered.map(f=>`<div class="faq-item"><div class="faq-q">${f.q}<span class="faq-arrow">▾</span></div><div class="faq-a"><p>${f.a}</p></div></div>`).join('');
   initFAQ();
 }
-renderFaq();
-
-// Contact channels
-const CHANNELS=[
-  {icon:'💬',name:'Discord',detail:'discord.gg/pandastudiox',response:'Fastest — usually minutes'},
-  {icon:'📧',name:'Email',detail:'support@pandastudiox.com',response:'4–8 hours'},
-  {icon:'🐦',name:'Twitter',detail:'@PandaStudioX',response:'1–2 days'},
-];
-document.getElementById('contact-channels').innerHTML=CHANNELS.map(c=>`
-  <div style="display:flex;align-items:center;gap:12px;padding:11px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border);cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='rgba(var(--accent-rgb),.35)'" onmouseout="this.style.borderColor='var(--border)'" onclick="showToast({icon:'${c.icon}',title:'${c.name}',desc:'${c.detail}'})">
-    <span style="font-size:22px">${c.icon}</span>
-    <div style="flex:1">
-      <div style="font-weight:700;font-size:13.5px">${c.name}</div>
-      <div style="font-size:12px;color:var(--muted)">${c.detail}</div>
-    </div>
-    <div style="font-size:11.5px;color:var(--accent3);font-weight:600">${c.response}</div>
-  </div>`).join('');
-
-// Status
-const STATUS=[
-  {service:'🌐 Website & Marketplace',status:'Operational',ok:true},
-  {service:'⚡ Digital Downloads',status:'Operational',ok:true},
-  {service:'💳 Payment Processing',status:'Operational',ok:true},
-  {service:'📧 Email Notifications',status:'Operational',ok:true},
-  {service:'🔑 API Services',status:'Operational',ok:true},
-  {service:'💬 Discord Bot',status:'Operational',ok:true},
-];
-document.getElementById('status-items').innerHTML=STATUS.map(s=>`
-  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);flex-wrap:wrap;gap:8px">
-    <span style="font-size:14px;font-weight:600">${s.service}</span>
-    <span style="display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;color:${s.ok?'var(--accent3)':'var(--danger)'}">
-      <span style="width:9px;height:9px;border-radius:50%;background:${s.ok?'var(--accent3)':'var(--danger)'};display:inline-block"></span>
-      ${s.status}
-    </span>
-  </div>`).join('');
-
+renderFAQ();
+document.getElementById('channels').innerHTML=[{icon:'💬',name:'Discord',detail:'discord.gg/pandastudiox',resp:'Fastest — usually minutes'},{icon:'📧',name:'Email',detail:'support@pandastudiox.com',resp:'4–8 hours'},{icon:'🐦',name:'Twitter',detail:'@PandaStudioX',resp:'1–2 days'}].map(c=>`<div style="display:flex;align-items:center;gap:11px;padding:10px;border-radius:var(--r);background:var(--surface);border:1px solid var(--border);cursor:pointer;transition:all .18s;margin-bottom:7px" onmouseover="this.style.borderColor='rgba(var(--accent-rgb),.35)'" onmouseout="this.style.borderColor='var(--border)'" onclick="showToast('${c.icon}','${c.name}','${c.detail}')"><span style="font-size:21px">${c.icon}</span><div style="flex:1"><div style="font-weight:700;font-size:13px">${c.name}</div><div style="font-size:11.5px;color:var(--muted)">${c.detail}</div></div><div style="font-size:11.5px;color:var(--accent3);font-weight:600">${c.resp}</div></div>`).join('');
+document.getElementById('status-list').innerHTML=[{s:'🌐 Website & Marketplace',ok:true},{s:'⚡ Digital Downloads',ok:true},{s:'💳 Payment Processing',ok:true},{s:'📧 Email Notifications',ok:true},{s:'🔑 API Services',ok:true},{s:'💬 Discord Bot',ok:true}].map(i=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);flex-wrap:wrap;gap:8px"><span style="font-size:14px;font-weight:600">${i.s}</span><span style="display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;color:var(--accent3)"><span style="width:9px;height:9px;border-radius:50%;background:var(--accent3);display:inline-block"></span>Operational</span></div>`).join('');
 function submitForm(){
   const name=document.getElementById('cf-name').value.trim();
   const email=document.getElementById('cf-email').value.trim();
   const msg=document.getElementById('cf-msg').value.trim();
-  if(!name||!email||!msg){showToast({icon:'⚠️',title:'Missing Fields',desc:'Please fill in all required fields.'});return;}
-  if(!email.includes('@')){showToast({icon:'⚠️',title:'Invalid Email',desc:'Please enter a valid email address.'});return;}
-  showToast({icon:'✅',title:'Message Sent!',desc:'We\'ll reply to '+email+' within 4–8 hours.'});
+  if(!name||!email||!msg){showToast('⚠️','Missing Fields','Please fill in all required fields.');return;}
+  if(!email.includes('@')){showToast('⚠️','Invalid Email','Please enter a valid email address.');return;}
+  showToast('✅','Message Sent!','We will reply to '+email+' within 4–8 hours.');
   document.getElementById('cf-name').value='';
   document.getElementById('cf-email').value='';
   document.getElementById('cf-msg').value='';
   document.getElementById('cf-order').value='';
 }
-</script>
-</body>
-</html>
+</script></body></html>

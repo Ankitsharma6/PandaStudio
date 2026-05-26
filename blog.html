@@ -1,50 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<html lang="en" data-theme="dark">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Blog — PandaStudioX</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>"/>
-<link rel="stylesheet" href="css/style.css"/>
-</head>
-<body>
-<canvas id="bg-canvas"></canvas>
-<div class="page-wrap">
-<div class="ticker-bar"><div class="ticker-inner" id="ticker"></div></div>
-<nav class="navbar">
-  <a class="nav-logo" href="index.html"><div class="nav-logo-emoji">🐼</div>PandaStudioX</a>
-  <div class="nav-links">
-    <a class="nav-link" href="index.html">Home</a>
-    <a class="nav-link" href="shop.html">Shop</a>
-    <a class="nav-link" href="community.html">Community</a>
-    <a class="nav-link active" href="blog.html">Blog</a>
-    <a class="nav-link" href="support.html">Contact</a>
-  </div>
-  <div class="nav-search"><input class="search-input" placeholder="Search articles..." autocomplete="off"/><span class="nav-search-icon">🔍</span><div class="search-dropdown"></div></div>
-  <div class="nav-right">
-    <div style="position:relative"><button class="theme-btn" id="theme-toggle-btn"></button><div class="theme-panel" id="theme-panel"></div></div>
-    <a href="cart.html" class="cart-btn">🛒<span class="cart-count">0</span></a>
-    <a href="dashboard.html" class="user-btn"><div class="user-avatar">🐼</div><div class="user-info"><div class="user-name">PandaX</div><div class="user-plan">Premium</div></div></a>
-  </div>
-  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+<link rel="stylesheet" href="css/style.css"/></head>
+<body><canvas id="bg-canvas"></canvas><div class="page">
+<div class="ticker"><div class="ticker-track" id="ticker-track"></div></div>
+<nav class="nav">
+  <a class="nav-logo" href="index.html"><div class="logo-icon">🐼</div>PandaStudioX</a>
+  <div class="nav-links"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="shop.html">Shop</a><a class="nav-link" href="community.html">Community</a><a class="nav-link" href="blog.html">Blog</a><a class="nav-link" href="support.html">Contact</a></div>
+  <div class="nav-search"><input class="nav-search-input" placeholder="Search articles..." autocomplete="off"/><span class="nav-search-icon">🔍</span><div class="search-drop"></div></div>
+  <div class="nav-right"><div style="position:relative"><button class="theme-btn"></button><div class="theme-panel" id="theme-panel"></div></div><a href="cart.html" class="cart-btn">🛒<span class="cart-n">0</span></a><a href="dashboard.html" class="user-btn"><div class="u-avatar">🐼</div><div><div class="u-name">PandaX</div><div class="u-plan">Premium</div></div></a></div>
+  <button class="mob-btn">☰</button>
 </nav>
-<nav class="mobile-nav">
-  <a class="mobile-nav-link" href="index.html">🏠 Home</a>
-  <a class="mobile-nav-link" href="shop.html">🛒 Shop</a>
-  <a class="mobile-nav-link active" href="blog.html">📝 Blog</a>
-</nav>
+<nav class="mob-nav"><a class="mob-link" href="index.html">🏠 Home</a><a class="mob-link" href="shop.html">🛒 Shop</a><a class="mob-link active" href="blog.html">📝 Blog</a></nav>
 
-<!-- HERO -->
 <div class="page-hero">
-  <div style="max-width:1280px;margin:0 auto">
-    <span class="section-label">Creator Resources</span>
-    <h1 style="font-family:var(--font2);font-size:clamp(28px,5vw,52px);font-weight:900;letter-spacing:-1.5px;margin-bottom:14px" class="fade-up">The Creator's <span style="color:var(--accent)">Blog</span></h1>
-    <p style="font-size:16px;color:var(--text2);max-width:500px;line-height:1.65" class="fade-up-1">Tutorials, news, design tips, gaming guides and creator stories — updated weekly.</p>
-  </div>
-</div>
-
-<!-- CATEGORY FILTER -->
-<div style="padding:16px 24px;border-bottom:1px solid var(--border);background:var(--bg2);position:relative;z-index:1">
-  <div style="max-width:1280px;margin:0 auto;display:flex;gap:8px;flex-wrap:wrap">
+<div class="page-hero-inner">
+  <span class="sec-label fu">Creator Resources</span>
+  <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,5vw,50px);font-weight:900;letter-spacing:-1.8px;margin-bottom:12px" class="fu1">The Creator's <span style="color:var(--accent)">Blog</span></h1>
+  <p style="font-size:15.5px;color:var(--text2);max-width:500px;line-height:1.65;margin-bottom:28px" class="fu2">Tutorials, gaming news, design tips, Minecraft guides and creator stories — updated weekly.</p>
+  <div class="fu3" style="display:flex;gap:8px;flex-wrap:wrap">
     <button class="btn btn-primary btn-sm">All Posts</button>
     <button class="btn btn-secondary btn-sm">🎮 Gaming</button>
     <button class="btn btn-secondary btn-sm">🎨 Design</button>
@@ -54,109 +30,75 @@
     <button class="btn btn-secondary btn-sm">📰 News</button>
   </div>
 </div>
+</div>
 
-<section class="section">
-<div class="section-inner">
-  <div style="display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:start">
-
-    <!-- Posts -->
+<section class="sec">
+<div class="sec-inner">
+  <div style="display:grid;grid-template-columns:1fr 290px;gap:28px;align-items:start">
     <div>
       <!-- Featured -->
-      <div class="blog-card reveal" style="margin-bottom:24px" onclick="showToast({icon:'📝',title:'Opening Article',desc:'Full article view coming soon!'})">
-        <div class="blog-thumb thumb-gaming" style="height:260px;font-size:90px">🎮<div class="blog-thumb-overlay"></div><div style="position:absolute;top:16px;left:16px;z-index:2"><span class="badge badge-hot">🔥 FEATURED</span></div></div>
+      <div class="blog-card reveal" style="margin-bottom:22px" onclick="showToast('📝','Article','Full article view coming soon!')">
+        <div class="blog-thumb pt-gaming" style="height:250px;font-size:80px">🎮<div class="blog-overlay"></div><div style="position:absolute;top:14px;left:14px;z-index:2"><span class="badge b-hot">🔥 FEATURED</span></div></div>
         <div class="blog-body">
-          <div class="blog-meta"><span class="badge badge-accent">Gaming</span><span style="font-size:12px;color:var(--muted)">Jun 14, 2026</span><span style="font-size:12px;color:var(--muted)">12 min read</span></div>
-          <h2 class="blog-title" style="font-size:22px">The Ultimate Guide to Gaming YouTube Thumbnails in 2026</h2>
-          <p class="blog-excerpt">Everything you need to know about creating click-worthy gaming thumbnails — color psychology, font choices, layout principles and the tools that actually work.</p>
-          <div style="display:flex;align-items:center;justify-content:space-between">
-            <div style="display:flex;align-items:center;gap:10px"><div style="width:34px;height:34px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px">🎮</div><div style="font-size:13px;font-weight:600">GamingPro_X</div></div>
+          <div class="blog-meta"><span class="badge b-acc">Gaming</span><span style="font-size:12px;color:var(--muted)">Jun 14, 2026</span><span style="font-size:12px;color:var(--muted)">12 min read</span></div>
+          <h2 class="blog-title" style="font-size:21px">The Ultimate Guide to Gaming YouTube Thumbnails in 2026</h2>
+          <p class="blog-excerpt">Everything you need to know about creating click-worthy gaming thumbnails — color psychology, font choices, layout principles and the tools that actually work for gaming creators.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+            <div style="display:flex;align-items:center;gap:9px"><div style="width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:15px">🎮</div><span style="font-size:13px;font-weight:600">GamingPro_X</span></div>
             <button class="btn btn-primary btn-sm">Read Article →</button>
           </div>
         </div>
       </div>
-
-      <!-- Grid posts -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px" id="blog-grid"></div>
-
-      <div style="text-align:center;margin-top:32px">
-        <button class="btn btn-secondary" onclick="showToast({icon:'⏳',title:'Loading',desc:'Loading more articles...'})">Load More Articles</button>
-      </div>
+      <!-- Grid -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px" id="blog-grid"></div>
+      <div style="text-align:center;margin-top:28px"><button class="btn btn-secondary" onclick="showToast('⏳','Loading','Loading more articles...')">Load More Articles</button></div>
     </div>
-
     <!-- Sidebar -->
-    <div style="display:flex;flex-direction:column;gap:18px">
-      <!-- Popular -->
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px" class="reveal">
-        <div style="font-weight:800;font-size:15px;margin-bottom:14px;font-family:var(--font2)">🔥 Popular This Week</div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:18px" class="reveal">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:14.5px;margin-bottom:13px">🔥 Popular This Week</div>
         <div id="popular-posts"></div>
       </div>
-      <!-- Tags -->
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px" class="reveal">
-        <div style="font-weight:800;font-size:15px;margin-bottom:14px;font-family:var(--font2)">🏷️ Tags</div>
-        <div style="display:flex;flex-wrap:wrap;gap:7px" id="blog-tags"></div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:18px" class="reveal">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:14.5px;margin-bottom:12px">🏷️ Tags</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px" id="tags-wrap"></div>
       </div>
-      <!-- Newsletter -->
-      <div style="background:linear-gradient(135deg,rgba(var(--accent-rgb),.14),rgba(var(--accent-rgb),.05));border:1px solid rgba(var(--accent-rgb),.25);border-radius:var(--radius-lg);padding:20px" class="reveal">
-        <div style="font-size:28px;margin-bottom:10px">📬</div>
-        <div style="font-weight:800;font-size:15px;margin-bottom:6px">Stay Updated</div>
-        <div style="font-size:13px;color:var(--muted);margin-bottom:14px">Get weekly tips and new product drops.</div>
-        <input class="form-input" placeholder="Your email..." style="margin-bottom:8px"/>
-        <button class="btn btn-primary btn-block btn-sm" onclick="showToast({icon:'📬',title:'Subscribed!',desc:'Welcome to the newsletter!'})">Subscribe</button>
+      <div style="background:linear-gradient(135deg,rgba(var(--accent-rgb),.13),rgba(var(--accent-rgb),.04));border:1px solid rgba(var(--accent-rgb),.24);border-radius:var(--rlg);padding:18px" class="reveal">
+        <div style="font-size:26px;margin-bottom:9px">📬</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:14.5px;margin-bottom:5px">Stay Updated</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:13px">Weekly tips and product drops in your inbox.</div>
+        <input class="f-input" id="nl-email" placeholder="Your email..." style="margin-bottom:8px"/>
+        <button class="btn btn-primary btn-block btn-sm" onclick="nlSubmit()">Subscribe →</button>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:18px" class="reveal">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:14.5px;margin-bottom:13px">✍️ Top Authors</div>
+        <div id="authors-list"></div>
       </div>
     </div>
   </div>
 </div>
 </section>
 
-<footer class="footer">
-<div class="footer-inner">
-  <div class="footer-grid">
-    <div><div class="footer-brand-logo"><div class="footer-brand-emoji">🐼</div>PandaStudioX</div><p class="footer-desc">The premium digital marketplace for creators.</p></div>
-    <div><div class="footer-col-title">Blog</div><div class="footer-links"><a class="footer-link" href="#">Gaming</a><a class="footer-link" href="#">Design</a><a class="footer-link" href="#">Tutorials</a><a class="footer-link" href="#">Creator Tips</a></div></div>
-    <div><div class="footer-col-title">Platform</div><div class="footer-links"><a class="footer-link" href="shop.html">Marketplace</a><a class="footer-link" href="community.html">Community</a><a class="footer-link" href="support.html">Support</a></div></div>
-    <div><div class="footer-col-title">Legal</div><div class="footer-links"><a class="footer-link" href="#">Terms</a><a class="footer-link" href="#">Privacy</a></div></div>
-  </div>
-  <div class="footer-bottom"><div class="footer-copy">© 2026 PandaStudioX.</div><div class="footer-version">v3.0</div></div>
+<footer class="footer"><div class="footer-inner"><div class="footer-grid"><div><div class="footer-logo"><div class="footer-logo-icon">🐼</div>PandaStudioX</div><p class="footer-desc">The premium digital marketplace for creators.</p></div><div><div class="footer-col-title">Blog</div><div class="footer-links"><a class="footer-link" href="#">Gaming</a><a class="footer-link" href="#">Design</a><a class="footer-link" href="#">Tutorials</a><a class="footer-link" href="#">Creator Tips</a></div></div><div><div class="footer-col-title">Platform</div><div class="footer-links"><a class="footer-link" href="shop.html">Shop</a><a class="footer-link" href="community.html">Community</a><a class="footer-link" href="support.html">Support</a></div></div><div><div class="footer-col-title">Legal</div><div class="footer-links"><a class="footer-link" href="#">Terms</a><a class="footer-link" href="#">Privacy</a></div></div></div><div class="footer-bottom"><div class="footer-copy">© 2026 PandaStudioX.</div><div style="font-size:12px;color:var(--muted2)">v4.0</div></div></div></footer>
 </div>
-</footer>
-</div>
-<div class="toast-container" id="toast-container"></div>
-<button class="scroll-top" id="scroll-top">↑</button>
-<script src="js/script.js"></script>
+<div class="toast-box" id="toast-box"></div>
+<button class="scroll-top-btn" id="scrollTopBtn">↑</button>
+<script src="js/app.js"></script>
 <script>
-const tickerEl=document.getElementById('ticker');
-tickerEl.innerHTML=[0,1].map(()=>['📝 New article: Thumbnail Guide 2026','🎮 Gaming tips every week','💡 Creator stories & tutorials'].map(t=>`<div class="ticker-item">${t}<div class="ticker-dot"></div></div>`).join('')).join('');
-
+buildTicker(['📝 New: Gaming Thumbnail Guide 2026','🎮 Gaming tips every week','💡 Creator stories and tutorials']);
 const POSTS=[
-  {icon:'⛏️',bg:'thumb-minecraft',cat:'Minecraft',title:'Top 10 Minecraft Texture Packs of 2026',excerpt:'We tested 50+ packs so you don\'t have to. Here are the absolute best ones this year.',author:'GamingPro_X',date:'Jun 12',read:'8 min',badge:'minecraft'},
-  {icon:'🎨',bg:'thumb-design',cat:'Design',title:'How to Design Thumbnails That Get Clicked',excerpt:'The psychology behind high-CTR thumbnails — color theory, composition and contrast.',author:'DesignMaster',date:'Jun 10',read:'6 min',badge:'design'},
-  {icon:'💰',bg:'thumb-source',cat:'Creator Tips',title:'How I Made ₹50K Selling Digital Products',excerpt:'A step-by-step breakdown of my journey from zero to ₹50K/month on PandaStudioX.',author:'PandaCreator',date:'Jun 8',read:'14 min',badge:'hot'},
-  {icon:'🎲',bg:'thumb-roblox',cat:'Roblox',title:'Roblox GFX Tutorial for Complete Beginners',excerpt:'Create stunning Roblox GFX from scratch using Blender and free tools.',author:'RobloxDev_J',date:'Jun 6',read:'12 min',badge:'new'},
-  {icon:'🖥️',bg:'thumb-ui',cat:'Design',title:'UI Design Trends Dominating 2026',excerpt:'Glassmorphism is dead. Here are the design trends that are actually dominating this year.',author:'UIExpert',date:'Jun 4',read:'7 min',badge:null},
-  {icon:'💻',bg:'thumb-pack',cat:'Tutorials',title:'Build a Digital Product Store in 7 Days',excerpt:'From idea to first sale in one week — a complete practical guide for beginners.',author:'CodeNinja',date:'Jun 2',read:'18 min',badge:null},
+  {icon:'⛏️',bg:'pt-minecraft',cat:'Minecraft',title:'Top 10 Minecraft Texture Packs of 2026',excerpt:"We tested 50+ packs so you don't have to. Here are the absolute best ones this year.",author:'GamingPro_X',date:'Jun 12',read:'8 min',badge:'b-acc'},
+  {icon:'🎨',bg:'pt-design',cat:'Design',title:'How to Design Thumbnails That Get Clicked',excerpt:"The psychology behind high-CTR thumbnails — color theory, composition and contrast that drives clicks.",author:'DesignMaster',date:'Jun 10',read:'6 min',badge:'b-acc'},
+  {icon:'💰',bg:'pt-code',cat:'Creator Tips',title:'How I Made ₹50K Selling Digital Products',excerpt:"A step-by-step breakdown of my journey from zero to ₹50K/month selling on PandaStudioX.",author:'PandaCreator',date:'Jun 8',read:'14 min',badge:'b-hot'},
+  {icon:'🎲',bg:'pt-roblox',cat:'Roblox',title:'Roblox GFX Tutorial for Complete Beginners',excerpt:'Create stunning Roblox GFX from scratch using Blender and free tools. No experience needed.',author:'RobloxDev_J',date:'Jun 6',read:'12 min',badge:'b-new'},
+  {icon:'🖥️',bg:'pt-ui',cat:'Design',title:'UI Design Trends Dominating 2026',excerpt:'Glassmorphism is gone. Here are the design trends that are actually winning in 2026.',author:'UIExpert',date:'Jun 4',read:'7 min',badge:'b-acc'},
+  {icon:'💻',bg:'pt-template',cat:'Tutorials',title:'Build a Digital Product Store in 7 Days',excerpt:'From idea to first sale in one week — a complete practical guide for absolute beginners.',author:'CodeNinja',date:'Jun 2',read:'18 min',badge:'b-acc'},
 ];
-const BADGE_MAP={minecraft:'badge-accent',design:'badge-accent',hot:'badge-hot',new:'badge-new'};
-document.getElementById('blog-grid').innerHTML=POSTS.map(p=>`
-  <div class="blog-card reveal" onclick="showToast({icon:'📝',title:'Article',desc:'Full articles coming soon!'})">
-    <div class="blog-thumb ${p.bg}" style="height:175px;font-size:56px">${p.icon}<div class="blog-thumb-overlay"></div></div>
-    <div class="blog-body">
-      <div class="blog-meta">${p.badge?`<span class="badge ${BADGE_MAP[p.badge]||'badge-accent'}">${p.cat}</span>`:`<span class="badge badge-muted">${p.cat}</span>`}<span style="font-size:12px;color:var(--muted)">${p.date}</span><span style="font-size:12px;color:var(--muted)">${p.read} read</span></div>
-      <h3 class="blog-title">${p.title}</h3>
-      <p class="blog-excerpt">${p.excerpt}</p>
-      <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px;color:var(--muted)">by ${p.author}</span><button class="btn btn-secondary btn-sm">Read →</button></div>
-    </div>
-  </div>`).join('');
-
-const POPULAR=['Ultimate Gaming Thumbnail Guide 2026','How I Made ₹50K Selling Digital Products','Top 10 Minecraft Packs of 2026','Roblox GFX Tutorial for Beginners','UI Design Trends Dominating 2026'];
-document.getElementById('popular-posts').innerHTML=POPULAR.map((p,i)=>`
-  <div style="display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer" onclick="showToast({icon:'📝',title:'Article',desc:'Opening...'})">
-    <div style="width:26px;height:26px;border-radius:7px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0">${i+1}</div>
-    <div style="font-size:13.5px;font-weight:600;line-height:1.4">${p}</div>
-  </div>`).join('');
-
-['#minecraft','#roblox','#gaming','#youtube','#design','#tutorial','#creator','#trending','#2026','#thumbnail'].forEach(t=>{
-  document.getElementById('blog-tags').innerHTML+=`<button class="btn btn-secondary btn-sm" style="padding:5px 12px;font-size:12px" onclick="showToast({icon:'🔍',title:'Tag',desc:'Filtering by ${t}'})"> ${t}</button>`;
-});
-</script>
-</body>
-</html>
+document.getElementById('blog-grid').innerHTML=POSTS.map(p=>`<div class="blog-card reveal" onclick="showToast('📝','Article','Full articles coming soon!')"><div class="blog-thumb ${p.bg}" style="height:175px;font-size:58px">${p.icon}<div class="blog-overlay"></div></div><div class="blog-body"><div class="blog-meta"><span class="badge ${p.badge}">${p.cat}</span><span style="font-size:12px;color:var(--muted)">${p.date}</span><span style="font-size:12px;color:var(--muted)">${p.read} read</span></div><h3 class="blog-title">${p.title}</h3><p class="blog-excerpt">${p.excerpt}</p><div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px;color:var(--muted)">by ${p.author}</span><button class="btn btn-secondary btn-sm">Read →</button></div></div></div>`).join('');
+const POP=['Ultimate Gaming Thumbnail Guide 2026','How I Made ₹50K Selling Digital Products','Top 10 Minecraft Packs of 2026','Roblox GFX Tutorial for Beginners','UI Design Trends Dominating 2026'];
+document.getElementById('popular-posts').innerHTML=POP.map((p,i)=>`<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer" onclick="showToast('📝','Article','Opening...')"><div style="width:24px;height:24px;border-radius:6px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0">${i+1}</div><div style="font-size:13px;font-weight:600;line-height:1.4">${p}</div></div>`).join('');
+['#minecraft','#roblox','#gaming','#youtube','#design','#tutorial','#creator','#trending','#2026','#thumbnail'].forEach(t=>{document.getElementById('tags-wrap').innerHTML+=`<button class="btn btn-secondary btn-sm" style="padding:4px 10px;font-size:11.5px" onclick="showToast('🔍','Tag','Filtering by ${t}')">${t}</button>`;});
+const AUTHORS=[{emoji:'🎮',name:'GamingPro_X',posts:12,followers:'22K'},{emoji:'🎨',name:'DesignMaster',posts:18,followers:'18K'},{emoji:'🤖',name:'AICreator',posts:8,followers:'7.8K'}];
+document.getElementById('authors-list').innerHTML=AUTHORS.map(a=>`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)"><div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">${a.emoji}</div><div style="flex:1"><div style="font-weight:700;font-size:13px">${a.name}</div><div style="font-size:11.5px;color:var(--muted)">${a.posts} posts·${a.followers} followers</div></div><button class="btn btn-secondary btn-sm" style="padding:5px 10px;font-size:11px" onclick="showToast('👤','Following','Following ${a.name}!')">Follow</button></div>`).join('');
+function nlSubmit(){const e=document.getElementById('nl-email').value.trim();if(!e||!e.includes('@')){showToast('⚠️','Invalid','Enter a valid email address.');return;}showToast('📬','Subscribed!','Welcome to the newsletter, '+e);document.getElementById('nl-email').value='';}
+</script></body></html>

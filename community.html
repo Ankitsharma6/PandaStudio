@@ -1,229 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<html lang="en" data-theme="dark">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Community — PandaStudioX</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👥</text></svg>"/>
-<link rel="stylesheet" href="css/style.css"/>
-</head>
-<body>
-<canvas id="bg-canvas"></canvas>
-<div class="page-wrap">
-<div class="ticker-bar"><div class="ticker-inner" id="ticker"></div></div>
-<nav class="navbar">
-  <a class="nav-logo" href="index.html"><div class="nav-logo-emoji">🐼</div>PandaStudioX</a>
-  <div class="nav-links">
-    <a class="nav-link" href="index.html">Home</a>
-    <a class="nav-link" href="shop.html">Shop</a>
-    <a class="nav-link active" href="community.html">Community</a>
-    <a class="nav-link" href="blog.html">Blog</a>
-    <a class="nav-link" href="support.html">Contact</a>
-  </div>
-  <div class="nav-search"><input class="search-input" placeholder="Search community..." autocomplete="off"/><span class="nav-search-icon">🔍</span><div class="search-dropdown"></div></div>
-  <div class="nav-right">
-    <div style="position:relative"><button class="theme-btn" id="theme-toggle-btn"></button><div class="theme-panel" id="theme-panel"></div></div>
-    <a href="cart.html" class="cart-btn">🛒<span class="cart-count">0</span></a>
-    <a href="dashboard.html" class="user-btn"><div class="user-avatar">🐼</div><div class="user-info"><div class="user-name">PandaX</div><div class="user-plan">Premium</div></div></a>
-  </div>
-  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+<link rel="stylesheet" href="css/style.css"/></head>
+<body><canvas id="bg-canvas"></canvas><div class="page">
+<div class="ticker"><div class="ticker-track" id="ticker-track"></div></div>
+<nav class="nav">
+  <a class="nav-logo" href="index.html"><div class="logo-icon">🐼</div>PandaStudioX</a>
+  <div class="nav-links"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="shop.html">Shop</a><a class="nav-link" href="community.html">Community</a><a class="nav-link" href="blog.html">Blog</a><a class="nav-link" href="support.html">Contact</a></div>
+  <div class="nav-search"><input class="nav-search-input" placeholder="Search..." autocomplete="off"/><span class="nav-search-icon">🔍</span><div class="search-drop"></div></div>
+  <div class="nav-right"><div style="position:relative"><button class="theme-btn"></button><div class="theme-panel" id="theme-panel"></div></div><a href="cart.html" class="cart-btn">🛒<span class="cart-n">0</span></a><a href="dashboard.html" class="user-btn"><div class="u-avatar">🐼</div><div><div class="u-name">PandaX</div><div class="u-plan">Premium</div></div></a></div>
+  <button class="mob-btn">☰</button>
 </nav>
-<nav class="mobile-nav">
-  <a class="mobile-nav-link" href="index.html">🏠 Home</a>
-  <a class="mobile-nav-link" href="shop.html">🛒 Shop</a>
-  <a class="mobile-nav-link active" href="community.html">👥 Community</a>
-</nav>
+<nav class="mob-nav"><a class="mob-link" href="index.html">🏠 Home</a><a class="mob-link" href="shop.html">🛒 Shop</a><a class="mob-link active" href="community.html">👥 Community</a></nav>
 
-<!-- HERO -->
 <div class="page-hero" style="text-align:center">
-  <div style="max-width:700px;margin:0 auto">
-    <span class="section-label">50K+ Members Worldwide</span>
-    <h1 style="font-family:var(--font2);font-size:clamp(30px,5vw,58px);font-weight:900;letter-spacing:-2px;margin-bottom:14px" class="fade-up">The <span style="color:var(--accent)">Creator</span> Community</h1>
-    <p style="font-size:16px;color:var(--text2);margin-bottom:28px;line-height:1.65" class="fade-up-1">Connect with gamers, designers and developers. Share your work, earn XP, join challenges and grow together.</p>
-    <div class="fade-up-2" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <button class="btn btn-primary btn-lg" onclick="showToast({icon:'🎉',title:'Welcome!',desc:'Sign up to join the community.'})">Join Community Free</button>
-      <button class="btn btn-secondary btn-lg" onclick="showToast({icon:'🎮',title:'Discord',desc:'Redirecting to our Discord server!'})">Join Discord →</button>
-    </div>
+<div class="page-hero-inner" style="max-width:680px;margin:0 auto;text-align:center">
+  <span class="sec-label fu">50K+ Members Worldwide</span>
+  <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,5vw,54px);font-weight:900;letter-spacing:-2px;margin-bottom:12px" class="fu1">The <span style="color:var(--accent)">Creator</span> Community</h1>
+  <p style="font-size:15.5px;color:var(--text2);margin-bottom:26px;line-height:1.65" class="fu2">Connect with gamers, designers and developers. Share your work, earn XP, join challenges and grow together.</p>
+  <div class="fu3" style="display:flex;gap:11px;justify-content:center;flex-wrap:wrap">
+    <button class="btn btn-primary btn-lg" onclick="showToast('🎉','Welcome!','Sign up to join the community.')">Join Community Free</button>
+    <button class="btn btn-secondary btn-lg" onclick="showToast('🎮','Discord','Redirecting to Discord server!')">Join Discord →</button>
   </div>
 </div>
-
-<!-- COMMUNITY STATS -->
-<div style="padding:24px;border-bottom:1px solid var(--border);background:var(--bg2);position:relative;z-index:1">
-  <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;text-align:center" class="reveal">
-    <div><div style="font-family:var(--font2);font-size:26px;font-weight:900;color:var(--accent)" data-count="50" data-suffix="K+">0</div><div style="font-size:12.5px;color:var(--muted);margin-top:4px">Members</div></div>
-    <div><div style="font-family:var(--font2);font-size:26px;font-weight:900;color:var(--accent)" data-count="12" data-suffix="K+">0</div><div style="font-size:12.5px;color:var(--muted);margin-top:4px">Discord Members</div></div>
-    <div><div style="font-family:var(--font2);font-size:26px;font-weight:900;color:var(--accent)" data-count="2400" data-suffix="+">0</div><div style="font-size:12.5px;color:var(--muted);margin-top:4px">Creators</div></div>
-    <div><div style="font-family:var(--font2);font-size:26px;font-weight:900;color:var(--accent)" data-count="340" data-suffix="+">0</div><div style="font-size:12.5px;color:var(--muted);margin-top:4px">Challenges Won</div></div>
-    <div><div style="font-family:var(--font2);font-size:26px;font-weight:900;color:var(--accent)" data-count="12" data-suffix="K+">0</div><div style="font-size:12.5px;color:var(--muted);margin-top:4px">Posts</div></div>
-  </div>
 </div>
 
-<!-- MAIN CONTENT -->
-<section class="section">
-<div class="section-inner">
-  <div style="display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:start">
+<!-- STATS -->
+<div style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:22px 20px;position:relative;z-index:1">
+<div style="max-width:1260px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:18px;text-align:center" class="reveal">
+  <div><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:900;color:var(--accent)" data-count="50" data-suffix="K+">0</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Members</div></div>
+  <div><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:900;color:var(--accent)" data-count="12" data-suffix="K+">0</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Discord Members</div></div>
+  <div><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:900;color:var(--accent)" data-count="2400" data-suffix="+">0</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Creators</div></div>
+  <div><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:900;color:var(--accent)" data-count="340" data-suffix="+">0</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Challenges Won</div></div>
+  <div><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:900;color:var(--accent)" data-count="12" data-suffix="K+">0</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Posts</div></div>
+</div>
+</div>
 
-    <!-- FEED -->
-    <div>
-      <!-- Post composer -->
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;margin-bottom:20px" class="reveal">
-        <div style="display:flex;gap:12px;align-items:flex-start">
-          <div style="width:42px;height:42px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🐼</div>
-          <div style="flex:1">
-            <input id="post-input" class="form-input" placeholder="Share something with the community..." style="margin-bottom:10px"/>
-            <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <button class="btn btn-secondary btn-sm" onclick="showToast({icon:'🖼️',title:'Image',desc:'Image upload coming soon!'})">🖼️ Image</button>
-              <button class="btn btn-secondary btn-sm" onclick="showToast({icon:'🔗',title:'Link',desc:'Link sharing coming soon!'})">🔗 Link</button>
-              <button class="btn btn-primary btn-sm" style="margin-left:auto" onclick="postToFeed()">Post →</button>
-            </div>
+<section class="sec">
+<div class="sec-inner">
+<div style="display:grid;grid-template-columns:1fr 300px;gap:26px;align-items:start">
+  <!-- FEED -->
+  <div>
+    <!-- Composer -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:16px;margin-bottom:18px" class="reveal">
+      <div style="display:flex;gap:11px;align-items:flex-start">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0">🐼</div>
+        <div style="flex:1">
+          <input id="post-input" class="f-input" placeholder="Share something with the community..." style="margin-bottom:9px"/>
+          <div style="display:flex;gap:7px;flex-wrap:wrap">
+            <button class="btn btn-secondary btn-sm" onclick="showToast('🖼️','Image','Image upload coming soon!')">🖼️ Image</button>
+            <button class="btn btn-secondary btn-sm" onclick="showToast('🔗','Link','Link sharing coming soon!')">🔗 Link</button>
+            <button class="btn btn-primary btn-sm" style="margin-left:auto" onclick="postFeed()">Post →</button>
           </div>
         </div>
       </div>
-
-      <!-- Feed tabs -->
-      <div style="display:flex;gap:6px;border-bottom:1px solid var(--border);margin-bottom:20px;overflow-x:auto;padding-bottom:2px" class="reveal">
-        <button class="prod-tab active" onclick="this.parentElement.querySelectorAll('.prod-tab').forEach(b=>b.classList.remove('active'));this.classList.add('active')">🔥 Trending</button>
-        <button class="prod-tab" onclick="this.parentElement.querySelectorAll('.prod-tab').forEach(b=>b.classList.remove('active'));this.classList.add('active')">✨ New</button>
-        <button class="prod-tab" onclick="this.parentElement.querySelectorAll('.prod-tab').forEach(b=>b.classList.remove('active'));this.classList.add('active')">🎮 Gaming</button>
-        <button class="prod-tab" onclick="this.parentElement.querySelectorAll('.prod-tab').forEach(b=>b.classList.remove('active'));this.classList.add('active')">🎨 Design</button>
-      </div>
-
-      <div id="feed-container"></div>
     </div>
-
-    <!-- SIDEBAR -->
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <!-- Discord -->
-      <div style="background:linear-gradient(135deg,rgba(88,101,242,.2),rgba(88,101,242,.06));border:1px solid rgba(88,101,242,.35);border-radius:var(--radius-lg);padding:22px;text-align:center" class="reveal">
-        <div style="font-size:44px;margin-bottom:12px">🎮</div>
-        <div style="font-weight:800;font-size:17px;margin-bottom:6px">Join Our Discord</div>
-        <div style="font-size:13.5px;color:var(--muted);margin-bottom:18px">12,000+ members · Gaming · Design · Dev channels</div>
-        <button class="btn btn-block" style="background:#5865f2;color:#fff;padding:12px;border-radius:10px;font-weight:700;font-size:14px" onclick="showToast({icon:'🎮',title:'Discord',desc:'Opening Discord invite...'})">Join Discord Server →</button>
-      </div>
-
-      <!-- XP card -->
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px" class="reveal">
-        <div style="font-weight:800;font-size:15px;margin-bottom:16px;font-family:var(--font2)">🏆 Your Progress</div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-          <div style="width:48px;height:48px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:22px">🐼</div>
-          <div><div style="font-weight:800;font-size:14.5px">PandaX</div><span class="badge badge-accent">Level 7 — Explorer</span></div>
-        </div>
-        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span style="color:var(--muted)">XP Progress</span><span style="color:var(--accent);font-weight:700">1,240 / 2,000 XP</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width:62%"></div></div>
-        <div style="font-size:12px;color:var(--muted);margin-top:6px">760 XP to reach Level 8 — Veteran</div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px">
-          ${['🏆','⭐','🎮','🔥','💎','🚀','🎨','🤖'].map(b=>`<div style="padding:10px;border-radius:10px;background:var(--surface);border:1px solid var(--border);text-align:center;font-size:20px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='rgba(var(--accent-rgb),.4)'" onmouseout="this.style.borderColor='var(--border)'">${b}</div>`).join('')}
-        </div>
-      </div>
-
-      <!-- Trending tags -->
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px" class="reveal">
-        <div style="font-weight:800;font-size:15px;margin-bottom:12px;font-family:var(--font2)">🔥 Trending Tags</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px">
-          ${['#minecraft','#roblox','#gaming','#design','#creator','#youtube','#tutorial','#pandastudiox'].map(t=>`<button class="btn btn-secondary btn-sm" style="padding:5px 10px;font-size:12px" onclick="showToast({icon:'🔍',title:'Tag',desc:'Filtering by ${t}'})">${t}</button>`).join('')}
-        </div>
-      </div>
+    <!-- Feed tabs -->
+    <div style="display:flex;gap:4px;border-bottom:1px solid var(--border);margin-bottom:18px;overflow-x:auto" class="reveal">
+      <button class="pd-tab active" onclick="fTab(this)">🔥 Trending</button>
+      <button class="pd-tab" onclick="fTab(this)">✨ New</button>
+      <button class="pd-tab" onclick="fTab(this)">🎮 Gaming</button>
+      <button class="pd-tab" onclick="fTab(this)">🎨 Design</button>
     </div>
-
+    <div id="feed-container"></div>
   </div>
+  <!-- SIDEBAR -->
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="background:linear-gradient(135deg,rgba(88,101,242,.2),rgba(88,101,242,.05));border:1px solid rgba(88,101,242,.35);border-radius:var(--rlg);padding:20px;text-align:center" class="reveal">
+      <div style="font-size:42px;margin-bottom:11px">🎮</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:16px;margin-bottom:5px">Join Our Discord</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:16px">12,000+ members · Gaming · Design · Dev</div>
+      <button class="btn btn-block" style="background:#5865f2;color:#fff;padding:11px;border-radius:9px;font-weight:700;font-size:14px" onclick="showToast('🎮','Discord','Opening Discord invite...')">Join Discord Server →</button>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:18px" class="reveal">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:14.5px;margin-bottom:14px">🏆 Your Progress</div>
+      <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px"><div style="width:46px;height:46px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:21px">🐼</div><div><div style="font-weight:800;font-size:14px">PandaX</div><span class="badge b-acc">Level 7 — Explorer</span></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px"><span style="color:var(--muted)">XP Progress</span><span style="color:var(--accent);font-weight:700">1,240 / 2,000 XP</span></div>
+      <div class="progress-bar"><div class="progress-fill" data-pct="62"></div></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:5px">760 XP to reach Level 8 — Veteran</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:14px" id="badges-grid"></div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:16px" class="reveal">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:14.5px;margin-bottom:12px">🌟 Top Creators</div>
+      <div id="top-creators"></div>
+      <button class="btn btn-secondary btn-block btn-sm" style="margin-top:12px">View All Creators</button>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:16px" class="reveal">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:14.5px;margin-bottom:11px">🔥 Trending Tags</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px" id="comm-tags"></div>
+    </div>
+  </div>
+</div>
 </div>
 </section>
 
 <!-- TOP CREATORS -->
-<section class="section" style="background:var(--bg2);border-top:1px solid var(--border)">
-<div class="section-inner">
-  <div class="section-header center reveal">
-    <span class="section-label">Community Stars</span>
-    <h2 class="section-title">Top Creators 🌟</h2>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px" id="creators-grid"></div>
+<section class="sec section-alt">
+<div class="sec-inner">
+  <div class="sec-hdr center reveal"><span class="sec-label">Community Stars</span><h2 class="sec-title">Top Creators 🌟</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px" id="creators-grid"></div>
 </div>
 </section>
 
-<footer class="footer">
-<div class="footer-inner">
-  <div class="footer-grid">
-    <div><div class="footer-brand-logo"><div class="footer-brand-emoji">🐼</div>PandaStudioX</div><p class="footer-desc">The premium digital marketplace for creators.</p></div>
-    <div><div class="footer-col-title">Community</div><div class="footer-links"><a class="footer-link" href="#">Feed</a><a class="footer-link" href="#">Creators</a><a class="footer-link" href="#">Discord</a><a class="footer-link" href="#">Challenges</a></div></div>
-    <div><div class="footer-col-title">Platform</div><div class="footer-links"><a class="footer-link" href="shop.html">Shop</a><a class="footer-link" href="blog.html">Blog</a><a class="footer-link" href="support.html">Support</a></div></div>
-    <div><div class="footer-col-title">Legal</div><div class="footer-links"><a class="footer-link" href="#">Terms</a><a class="footer-link" href="#">Privacy</a></div></div>
-  </div>
-  <div class="footer-bottom"><div class="footer-copy">© 2026 PandaStudioX.</div><div class="footer-version">v3.0</div></div>
+<footer class="footer"><div class="footer-inner"><div class="footer-grid"><div><div class="footer-logo"><div class="footer-logo-icon">🐼</div>PandaStudioX</div><p class="footer-desc">The premium digital marketplace for creators.</p></div><div><div class="footer-col-title">Community</div><div class="footer-links"><a class="footer-link" href="#">Feed</a><a class="footer-link" href="#">Creators</a><a class="footer-link" href="#">Discord</a><a class="footer-link" href="#">Challenges</a></div></div><div><div class="footer-col-title">Platform</div><div class="footer-links"><a class="footer-link" href="shop.html">Shop</a><a class="footer-link" href="blog.html">Blog</a><a class="footer-link" href="support.html">Support</a></div></div><div><div class="footer-col-title">Legal</div><div class="footer-links"><a class="footer-link" href="#">Terms</a><a class="footer-link" href="#">Privacy</a></div></div></div><div class="footer-bottom"><div class="footer-copy">© 2026 PandaStudioX.</div><div style="font-size:12px;color:var(--muted2)">v4.0</div></div></div></footer>
 </div>
-</footer>
-</div>
-<div class="toast-container" id="toast-container"></div>
-<button class="scroll-top" id="scroll-top">↑</button>
-<script src="js/script.js"></script>
+<div class="toast-box" id="toast-box"></div>
+<button class="scroll-top-btn" id="scrollTopBtn">↑</button>
+<script src="js/app.js"></script>
 <script>
-const tickerEl=document.getElementById('ticker');
-tickerEl.innerHTML=[0,1].map(()=>['👥 50K+ community members','🎮 Join our Discord server','🏆 Weekly creator challenges'].map(t=>`<div class="ticker-item">${t}<div class="ticker-dot"></div></div>`).join('')).join('');
-
-const FEED_POSTS=[
-  {avatar:'🎮',name:'GamingPro_X',time:'2h ago',tag:'Gaming',text:'Just dropped my NEW Minecraft Dragon Texture Pack! 200+ HD textures, RTX support, works on 1.21. Been working on this for 3 months — finally done! 🐉🔥',likes:247,comments:38,liked:false},
-  {avatar:'🎨',name:'DesignMaster',time:'4h ago',tag:'Design',text:'Here\'s my latest YouTube Thumbnail Kit — 50+ templates, fully customizable in PSD & Canva. Took all the feedback from last month and totally redesigned it. What do you think? 👇',likes:182,comments:24,liked:false},
-  {avatar:'🎲',name:'RobloxDev_J',time:'8h ago',tag:'Roblox',text:'My Roblox GFX Pack just hit 3,000 sales on PandaStudioX! For anyone starting out — just keep posting, keep improving. The community here is incredibly supportive. 🙏',likes:891,comments:103,liked:false},
-  {avatar:'💻',name:'CodeNinja',time:'1d ago',tag:'Dev',text:'Shipped my React Native app kit — 50+ screens, dark mode, TypeScript. Built it because I was tired of starting from scratch every project. Hope it helps others too! 🚀',likes:329,comments:58,liked:false},
+buildTicker(['👥 50K+ community members','🎮 Join our Discord server','🏆 Weekly creator challenges']);
+function fTab(btn){btn.parentElement.querySelectorAll('.pd-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+let localPosts=[
+  {av:'🎮',name:'GamingPro_X',time:'2h ago',tag:'Gaming',text:"Just dropped my NEW Minecraft Dragon Texture Pack! 200+ HD textures, RTX support, works on 1.21. Been working on this for 3 months — finally done! 🐉🔥",likes:247,comments:38,liked:false},
+  {av:'🎨',name:'DesignMaster',time:'4h ago',tag:'Design',text:"Here's my latest YouTube Thumbnail Kit — 50+ templates, fully customizable in PSD & Canva. Totally redesigned it based on your feedback. What do you think? 👇",likes:182,comments:24,liked:false},
+  {av:'🎲',name:'RobloxDev_J',time:'8h ago',tag:'Roblox',text:"My Roblox GFX Pack just hit 3,000 sales on PandaStudioX! Started with zero followers 6 months ago. For anyone starting out — just keep posting and keep improving. 🙏",likes:891,comments:103,liked:false},
+  {av:'💻',name:'CodeNinja',time:'1d ago',tag:'Dev',text:"Shipped my React Native app kit — 50+ screens, dark mode, TypeScript, Zustand. Built it because I was tired of starting from scratch every project. Hope it helps! 🚀",likes:329,comments:58,liked:false},
 ];
-let localPosts=[...FEED_POSTS];
-
 function renderFeed(){
-  document.getElementById('feed-container').innerHTML=localPosts.map((p,i)=>`
-    <div class="post-card reveal">
-      <div class="post-card-body">
-        <div class="post-author-row">
-          <div class="post-author-avatar">${p.avatar}</div>
-          <div style="flex:1"><div style="font-weight:700;font-size:14px">${p.name}</div><div style="font-size:12px;color:var(--muted)">${p.time}</div></div>
-          <span class="badge badge-accent">${p.tag}</span>
-        </div>
-        <p class="post-text">${p.text}</p>
-        <div style="padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
-          <div class="post-actions">
-            <button class="post-action-btn ${p.liked?'liked':''}" id="like-${i}" onclick="likePo(${i})">
-              ${p.liked?'❤️':'🤍'} <span id="lc-${i}">${p.likes}</span>
-            </button>
-            <button class="post-action-btn" onclick="showToast({icon:'💬',title:'Comments',desc:'Comment section coming soon!'})">💬 ${p.comments}</button>
-            <button class="post-action-btn" onclick="showToast({icon:'↗️',title:'Shared!',desc:'Link copied to clipboard.'})">↗ Share</button>
-          </div>
-          <button class="btn btn-secondary btn-sm" onclick="showToast({icon:'👤',title:'Following',desc:'Following ${p.name}!'})">+ Follow</button>
-        </div>
-      </div>
-    </div>`).join('');
-  setTimeout(()=>initReveal(),50);
+  document.getElementById('feed-container').innerHTML=localPosts.map((p,i)=>`<div class="post-card reveal"><div class="post-body"><div class="post-author-row"><div class="post-avatar">${p.av}</div><div style="flex:1"><div style="font-weight:700;font-size:13.5px">${p.name}</div><div style="font-size:12px;color:var(--muted)">${p.time}</div></div><span class="badge b-acc">${p.tag}</span></div><p class="post-text">${p.text}</p><div style="padding-top:11px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px"><div class="post-actions"><button class="post-act-btn ${p.liked?'liked':''}" id="lb-${i}" onclick="likePost(${i})">${p.liked?'❤️':'🤍'} <span id="lc-${i}">${p.likes}</span></button><button class="post-act-btn" onclick="showToast('💬','Comments','Comment section coming soon!')">💬 ${p.comments}</button><button class="post-act-btn" onclick="showToast('↗️','Shared!','Link copied!')">↗ Share</button></div><button class="btn btn-secondary btn-sm" onclick="showToast('👤','Following','Following ${p.name}!')">+ Follow</button></div></div></div>`).join('');
+  setTimeout(initReveal,50);
 }
-function likePo(i){
-  localPosts[i].liked=!localPosts[i].liked;
-  localPosts[i].likes+=localPosts[i].liked?1:-1;
-  renderFeed();
-}
-function postToFeed(){
-  const v=document.getElementById('post-input').value.trim();
-  if(!v){showToast({icon:'⚠️',title:'Empty Post',desc:'Write something first!'});return;}
-  localPosts.unshift({avatar:'🐼',name:'You',time:'just now',tag:'Post',text:v,likes:0,comments:0,liked:false});
-  document.getElementById('post-input').value='';
-  renderFeed();
-  showToast({icon:'✅',title:'Posted!',desc:'Your post is live in the feed.'});
-}
+function likePost(i){localPosts[i].liked=!localPosts[i].liked;localPosts[i].likes+=localPosts[i].liked?1:-1;renderFeed();}
+function postFeed(){const v=document.getElementById('post-input').value.trim();if(!v){showToast('⚠️','Empty','Write something first!');return;}localPosts.unshift({av:'🐼',name:'You',time:'just now',tag:'Post',text:v,likes:0,comments:0,liked:false});document.getElementById('post-input').value='';renderFeed();showToast('✅','Posted!','Your post is live in the feed.');}
 renderFeed();
-
-const CREATORS=[
-  {emoji:'🎮',name:'GamingPro_X',role:'Minecraft Expert',followers:'22.1K',products:7,verified:true},
-  {emoji:'🎨',name:'DesignMaster',role:'UI/UX Designer',followers:'18.2K',products:28,verified:true},
-  {emoji:'💻',name:'CodeNinja',role:'Full Stack Dev',followers:'9.4K',products:15,verified:false},
-  {emoji:'🤖',name:'AICreator',role:'AI Enthusiast',followers:'7.8K',products:9,verified:true},
-  {emoji:'🎲',name:'RobloxDev_J',role:'Roblox Creator',followers:'14.5K',products:12,verified:true},
-  {emoji:'🐼',name:'PandaCreator',role:'Gaming & Design',followers:'12.4K',products:18,verified:true},
-];
-document.getElementById('creators-grid').innerHTML=CREATORS.map(c=>`
-  <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;transition:all .3s;cursor:pointer" class="reveal" onmouseover="this.style.borderColor='rgba(var(--accent-rgb),.4)';this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-    <div style="width:66px;height:66px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 14px;box-shadow:0 4px 20px rgba(var(--accent-rgb),.3)">${c.emoji}</div>
-    <div style="font-weight:800;font-size:15px;margin-bottom:3px">${c.name} ${c.verified?'<span style="color:#3b82f6;font-size:13px">✓</span>':''}</div>
-    <div style="font-size:12.5px;color:var(--muted);margin-bottom:14px">${c.role}</div>
-    <div style="display:flex;justify-content:center;gap:24px;margin-bottom:16px">
-      <div style="text-align:center"><div style="font-weight:800;font-size:15px;color:var(--accent)">${c.followers}</div><div style="font-size:11px;color:var(--muted)">Followers</div></div>
-      <div style="text-align:center"><div style="font-weight:800;font-size:15px;color:var(--accent)">${c.products}</div><div style="font-size:11px;color:var(--muted)">Products</div></div>
-    </div>
-    <button class="btn btn-secondary btn-sm btn-block" onclick="showToast({icon:'👤',title:'Following',desc:'Following ${c.name}!'})">Follow</button>
-  </div>`).join('');
-</script>
-</body>
-</html>
+['🏆','⭐','🎮','🔥','💎','🚀','🎨','🤖'].forEach(b=>{document.getElementById('badges-grid').innerHTML+=`<div style="padding:9px;border-radius:9px;background:var(--surface);border:1px solid var(--border);text-align:center;font-size:19px;cursor:pointer;transition:all .18s" onmouseover="this.style.borderColor='rgba(var(--accent-rgb),.4)'" onmouseout="this.style.borderColor='var(--border)'">${b}</div>`;});
+const TC=[{emoji:'🎮',name:'GamingPro_X',followers:'22.1K'},{emoji:'🎨',name:'DesignMaster',followers:'18.2K'},{emoji:'💻',name:'CodeNinja',followers:'9.4K'}];
+document.getElementById('top-creators').innerHTML=TC.map(c=>`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)"><div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">${c.emoji}</div><div style="flex:1"><div style="font-weight:700;font-size:13px">${c.name}</div><div style="font-size:11.5px;color:var(--muted)">${c.followers} followers</div></div><button class="btn btn-secondary btn-sm" style="padding:5px 10px;font-size:11px" onclick="showToast('👤','Following','Following ${c.name}!')">Follow</button></div>`).join('');
+['#minecraft','#roblox','#gaming','#design','#creator','#youtube','#tutorial','#pandastudiox'].forEach(t=>{document.getElementById('comm-tags').innerHTML+=`<button class="btn btn-secondary btn-sm" style="padding:4px 9px;font-size:11.5px" onclick="showToast('🔍','Tag','Filtering by ${t}')">${t}</button>`;});
+const CREATORS=[{emoji:'🎮',name:'GamingPro_X',role:'Minecraft Expert',followers:'22.1K',products:7,verified:true},{emoji:'🎨',name:'DesignMaster',role:'UI/UX Designer',followers:'18.2K',products:28,verified:true},{emoji:'💻',name:'CodeNinja',role:'Full Stack Dev',followers:'9.4K',products:15,verified:false},{emoji:'🤖',name:'AICreator',role:'AI Enthusiast',followers:'7.8K',products:9,verified:true},{emoji:'🎲',name:'RobloxDev_J',role:'Roblox Creator',followers:'14.5K',products:12,verified:true},{emoji:'🐼',name:'PandaCreator',role:'Gaming & Design',followers:'12.4K',products:18,verified:true}];
+document.getElementById('creators-grid').innerHTML=CREATORS.map(c=>`<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:22px;text-align:center;transition:all .26s;cursor:pointer" class="reveal" onmouseover="this.style.borderColor='rgba(var(--accent-rgb),.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''"><div style="width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px;box-shadow:0 4px 18px rgba(var(--accent-rgb),.3)">${c.emoji}</div><div style="font-weight:800;font-size:14.5px;margin-bottom:3px">${c.name} ${c.verified?'<span style="color:#3b82f6;font-size:13px">✓</span>':''}</div><div style="font-size:12px;color:var(--muted);margin-bottom:13px">${c.role}</div><div style="display:flex;justify-content:center;gap:22px;margin-bottom:14px"><div style="text-align:center"><div style="font-weight:800;font-size:15px;color:var(--accent)">${c.followers}</div><div style="font-size:11px;color:var(--muted)">Followers</div></div><div style="text-align:center"><div style="font-weight:800;font-size:15px;color:var(--accent)">${c.products}</div><div style="font-size:11px;color:var(--muted)">Products</div></div></div><button class="btn btn-secondary btn-sm btn-block" onclick="showToast('👤','Following','Following ${c.name}!')">Follow</button></div>`).join('');
+</script></body></html>

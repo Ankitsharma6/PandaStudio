@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Gaming Thumbnail Pack — PandaStudioX</title>
@@ -8,12 +8,10 @@
 </head>
 <body>
 <canvas id="bg-canvas"></canvas>
-<div class="page-wrap">
-
-<div class="ticker-bar"><div class="ticker-inner" id="ticker"></div></div>
-
-<nav class="navbar">
-  <a class="nav-logo" href="index.html"><div class="nav-logo-emoji">🐼</div>PandaStudioX</a>
+<div class="page">
+<div class="ticker"><div class="ticker-track" id="ticker-track"></div></div>
+<nav class="nav">
+  <a class="nav-logo" href="index.html"><div class="logo-icon">🐼</div>PandaStudioX</a>
   <div class="nav-links">
     <a class="nav-link" href="index.html">Home</a>
     <a class="nav-link" href="shop.html">Shop</a>
@@ -23,391 +21,322 @@
     <a class="nav-link" href="support.html">Contact</a>
   </div>
   <div class="nav-search">
-    <input class="search-input" placeholder="Search for products..." autocomplete="off"/>
+    <input class="nav-search-input" placeholder="Search for products..." autocomplete="off"/>
     <span class="nav-search-icon">🔍</span>
-    <div class="search-dropdown"></div>
+    <div class="search-drop"></div>
   </div>
   <div class="nav-right">
-    <div style="position:relative"><button class="theme-btn" id="theme-toggle-btn"></button><div class="theme-panel" id="theme-panel"></div></div>
-    <a href="cart.html" class="cart-btn">🛒<span class="cart-count">0</span></a>
-    <a href="dashboard.html" class="user-btn"><div class="user-avatar">🐼</div><div class="user-info"><div class="user-name">PandaX</div><div class="user-plan">Premium</div></div></a>
+    <div style="position:relative"><button class="theme-btn"></button><div class="theme-panel" id="theme-panel"></div></div>
+    <a href="cart.html" class="cart-btn">🛒<span class="cart-n">0</span></a>
+    <a href="dashboard.html" class="user-btn"><div class="u-avatar">🐼</div><div><div class="u-name">PandaX</div><div class="u-plan">Premium</div></div></a>
   </div>
-  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+  <button class="mob-btn">☰</button>
 </nav>
-<nav class="mobile-nav">
-  <a class="mobile-nav-link" href="index.html">🏠 Home</a>
-  <a class="mobile-nav-link active" href="shop.html">🛒 Shop</a>
-  <a class="mobile-nav-link" href="dashboard.html">📊 Dashboard</a>
-  <a class="mobile-nav-link" href="cart.html">🛒 Cart</a>
+<nav class="mob-nav">
+  <a class="mob-link" href="index.html">🏠 Home</a>
+  <a class="mob-link" href="shop.html">🛒 Shop</a>
+  <a class="mob-link" href="cart.html">🛒 Cart</a>
+  <a class="mob-link" href="dashboard.html">📊 Dashboard</a>
 </nav>
 
 <!-- BREADCRUMB -->
-<div style="padding:16px 24px;border-bottom:1px solid var(--border);background:var(--bg2);position:relative;z-index:1">
-  <div style="max-width:1280px;margin:0 auto" class="breadcrumb">
+<div style="padding:13px 20px;background:var(--bg2);border-bottom:1px solid var(--border);position:relative;z-index:1">
+  <div class="breadcrumb container">
     <a href="index.html">Home</a><span class="breadcrumb-sep">›</span>
     <a href="shop.html">Shop</a><span class="breadcrumb-sep">›</span>
     <a href="shop.html?cat=thumbnails">Thumbnails</a><span class="breadcrumb-sep">›</span>
-    <span style="color:var(--text)">Gaming Thumbnail Pack</span>
+    <span>Gaming Thumbnail Pack</span>
   </div>
 </div>
 
-<!-- PRODUCT DETAIL -->
-<div style="padding:28px 24px;max-width:1280px;margin:0 auto;position:relative;z-index:1">
-  <div class="product-detail-grid">
+<div style="padding:26px 20px 60px;max-width:1260px;margin:0 auto;position:relative;z-index:1">
+  <div class="pd-grid">
 
-    <!-- ── GALLERY ── -->
+    <!-- GALLERY + TABS -->
     <div>
-      <div class="product-gallery">
-        <!-- Thumbnails strip -->
-        <div class="gallery-thumbs" id="gallery-thumbs"></div>
-        <!-- Main image -->
-        <div class="gallery-main" id="gallery-main">
-          <div class="gallery-main-inner thumb-gaming" id="main-prod-bg">
-            <div class="thumb-glow"></div>
-            <div class="thumb-grid-lines"></div>
-            <span id="main-prod-icon" style="font-size:100px;position:relative;z-index:2;filter:drop-shadow(0 4px 20px rgba(0,0,0,.7))">🎮</span>
+      <!-- Product meta above gallery -->
+      <span class="badge b-best" style="margin-bottom:10px;display:inline-flex">Bestseller</span>
+      <h1 class="pd-title">Gaming Thumbnail Pack</h1>
+      <div class="pd-meta">
+        <div class="stars" style="font-size:15px">★★★★★</div>
+        <span style="font-weight:700;font-size:14px">4.8 (142 Reviews)</span>
+        <span style="color:var(--muted)">·</span>
+        <span style="font-size:13.5px;color:var(--text2)">🛒 320+ Sales</span>
+      </div>
+      <p class="pd-desc">High quality gaming thumbnails for YouTube, Twitch and more. Perfect for all games!</p>
+      <div class="pd-tags">
+        <span class="pd-tag">✓ High Quality</span>
+        <span class="pd-tag">✓ Easy to Edit</span>
+        <span class="pd-tag">✓ PSD Files</span>
+        <span class="pd-tag">✓ Commercial Use</span>
+      </div>
+
+      <!-- Gallery -->
+      <div class="gallery-wrap" style="margin-bottom:28px">
+        <div class="g-thumbs" id="g-thumbs"></div>
+        <div class="g-main" id="g-main">
+          <div class="g-main-inner pt-gaming" id="g-main-bg">
+            <div class="pt-glow" style="background:var(--accent)"></div>
+            <div class="pt-grid"></div>
+            <span id="g-main-icon" style="font-size:90px;position:relative;z-index:2;filter:drop-shadow(0 4px 20px rgba(0,0,0,.7))">🎮</span>
           </div>
-          <div class="gallery-play-btn" onclick="showToast({icon:'▶️',title:'Preview',desc:'Video preview coming soon!'})">
-            <div class="gallery-play-icon">▶</div>
+          <div class="g-play" onclick="showToast('▶️','Preview','Video preview opening...')">
+            <div class="g-play-btn">▶</div>
           </div>
-          <div class="gallery-screenshots">🖼 12+ Screenshots</div>
-          <div class="gallery-nav">
+          <div class="g-ss-label">🖼 12+ Screenshots</div>
+          <div class="g-nav">
             <button onclick="prevImg()">‹</button>
             <button onclick="nextImg()">›</button>
           </div>
         </div>
       </div>
 
-      <!-- TABS -->
-      <div style="margin-top:32px">
-        <div class="prod-tabs">
-          <div class="prod-tabs-inner">
-            <button class="prod-tab active" data-panel="description" onclick="switchProdTab('description',this)">Description</button>
-            <button class="prod-tab" data-panel="reviews" onclick="switchProdTab('reviews',this)">Reviews (142)</button>
-            <button class="prod-tab" data-panel="comments" onclick="switchProdTab('comments',this)">Comments (56)</button>
-            <button class="prod-tab" data-panel="changelog" onclick="switchProdTab('changelog',this)">Changelog</button>
-            <button class="prod-tab" data-panel="faq" onclick="switchProdTab('faq',this)">FAQ</button>
+      <!-- Included -->
+      <div class="incl-title">What's Included</div>
+      <div id="incl-list" style="margin-bottom:20px"></div>
+
+      <!-- Tabs -->
+      <div class="pd-tabs">
+        <button class="pd-tab active" onclick="switchProdTab('description',this)">Description</button>
+        <button class="pd-tab" onclick="switchProdTab('reviews',this)">Reviews (142)</button>
+        <button class="pd-tab" onclick="switchProdTab('comments',this)">Comments (56)</button>
+        <button class="pd-tab" onclick="switchProdTab('changelog',this)">Changelog</button>
+        <button class="pd-tab" onclick="switchProdTab('faq',this)">FAQ</button>
+      </div>
+
+      <div class="pd-panel active" id="panel-description">
+        <p style="font-size:14.5px;color:var(--text2);line-height:1.78;margin-bottom:14px">The <strong>Gaming Thumbnail Pack</strong> is the ultimate collection of high-quality YouTube gaming thumbnails. Used by top creators worldwide, these templates are designed to maximize clicks and grow your channel faster.</p>
+        <p style="font-size:14.5px;color:var(--text2);line-height:1.78;margin-bottom:14px">Each template is crafted in <strong>1280×720px</strong> at 300 DPI, fully customizable in Photoshop and Canva. Every font used is free and included in the download.</p>
+        <div style="padding:16px;background:rgba(var(--accent-rgb),.06);border:1px solid rgba(var(--accent-rgb),.18);border-radius:var(--r);margin-top:16px">
+          <div style="font-weight:700;font-size:13.5px;margin-bottom:10px">📋 File Requirements</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;font-size:13.5px;color:var(--text2)">
+            <span>▸ Adobe Photoshop CS6+</span><span>▸ Canva (free version)</span>
+            <span>▸ ZIP extractor</span><span>▸ 1GB free space</span>
+            <span>▸ Windows / Mac / Linux</span><span>▸ Bedrock 1.19+ supported</span>
           </div>
         </div>
+      </div>
 
-        <!-- Description -->
-        <div class="prod-tab-panel active" id="panel-description">
-          <div style="font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:22px">
-            <p style="margin-bottom:14px">The <strong>Gaming Thumbnail Pack</strong> is the ultimate collection of high-quality YouTube gaming thumbnails. Used by top creators worldwide, these templates are designed to maximize clicks and grow your channel faster.</p>
-            <p style="margin-bottom:14px">Each template is crafted in <strong>1280×720px</strong> at 300 DPI, completely customizable in Photoshop and Canva. Every font used is free and included in the download.</p>
-            <p>Perfect for YouTube, Twitch streams, Facebook gaming, and any gaming content creator looking to stand out from the crowd.</p>
+      <div class="pd-panel" id="panel-reviews">
+        <div style="display:flex;gap:24px;align-items:flex-start;padding:18px;background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);margin-bottom:18px;flex-wrap:wrap">
+          <div style="text-align:center;flex-shrink:0">
+            <div style="font-size:50px;font-weight:900;color:var(--accent);font-family:'Space Grotesk',sans-serif;line-height:1">4.8</div>
+            <div class="stars" style="font-size:17px">★★★★★</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px">142 reviews</div>
           </div>
-          <div class="product-included-title">What's Included</div>
-          <div class="product-included-list" id="included-list"></div>
-          <div style="padding:18px;background:rgba(var(--accent-rgb),.06);border:1px solid rgba(var(--accent-rgb),.2);border-radius:var(--radius);margin-top:18px">
-            <div style="font-weight:700;font-size:14px;margin-bottom:12px">📋 File Requirements</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13.5px;color:var(--text2)" id="requirements"></div>
-          </div>
+          <div style="flex:1;min-width:140px" id="rating-breakdown"></div>
         </div>
+        <div id="reviews-list"></div>
+        <button class="btn btn-outline btn-block" style="margin-top:12px" onclick="showToast('✍️','Write Review','Sign in to leave a review!')">+ Write a Review</button>
+      </div>
 
-        <!-- Reviews -->
-        <div class="prod-tab-panel" id="panel-reviews">
-          <div style="display:flex;gap:28px;align-items:flex-start;padding:20px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:20px;flex-wrap:wrap">
-            <div style="text-align:center;flex-shrink:0;min-width:100px">
-              <div style="font-size:54px;font-weight:900;color:var(--accent);font-family:var(--font2);line-height:1">4.8</div>
-              <div class="stars" style="font-size:18px">★★★★★</div>
-              <div style="font-size:12.5px;color:var(--muted);margin-top:4px">142 reviews</div>
-            </div>
-            <div style="flex:1;min-width:160px" id="rating-breakdown"></div>
-          </div>
-          <div id="reviews-list"></div>
-          <button class="btn btn-outline btn-block" style="margin-top:14px" onclick="showToast({icon:'✍️',title:'Write Review',desc:'Sign in to leave a review!'})">+ Write a Review</button>
+      <div class="pd-panel" id="panel-comments">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:16px;margin-bottom:14px">
+          <textarea class="f-input" placeholder="Ask a question or leave a comment..." style="min-height:76px;resize:vertical;margin-bottom:9px"></textarea>
+          <button class="btn btn-primary btn-sm" onclick="showToast('💬','Posted!','Your comment is live.')">Post Comment</button>
         </div>
+        <div id="comments-list"></div>
+      </div>
 
-        <!-- Comments -->
-        <div class="prod-tab-panel" id="panel-comments">
-          <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;margin-bottom:16px">
-            <textarea class="form-input" placeholder="Ask a question or leave a comment..." style="width:100%;min-height:80px;resize:vertical;margin-bottom:10px"></textarea>
-            <button class="btn btn-primary btn-sm" onclick="showToast({icon:'💬',title:'Comment Posted!',desc:'Your comment is live.'})">Post Comment</button>
-          </div>
-          <div id="comments-list"></div>
-        </div>
+      <div class="pd-panel" id="panel-changelog" id="changelog-list-wrap">
+        <div id="changelog-list"></div>
+      </div>
 
-        <!-- Changelog -->
-        <div class="prod-tab-panel" id="panel-changelog">
-          <div id="changelog-list"></div>
-        </div>
-
-        <!-- FAQ -->
-        <div class="prod-tab-panel" id="panel-faq">
-          <div id="faq-list"></div>
-        </div>
-
+      <div class="pd-panel" id="panel-faq">
+        <div id="faq-list"></div>
       </div>
     </div>
 
-    <!-- ── BUY PANEL ── -->
+    <!-- BUY PANEL -->
     <div>
       <div class="buy-panel">
-        <div class="buy-panel-license">Standard License</div>
-        <div class="buy-panel-price-row">
-          <span class="buy-panel-price">₹3.99</span>
-          <span class="buy-panel-original">₹4.99</span>
-          <span class="badge badge-sale" style="margin-left:auto">-20%</span>
+        <div class="buy-lic">Standard License</div>
+        <div class="buy-price-row">
+          <span class="buy-price">₹3.99</span>
+          <span class="buy-orig">₹4.99</span>
+          <span class="badge b-sale" style="margin-left:auto">-20%</span>
         </div>
-        <div class="buy-panel-features" id="buy-features"></div>
-        <button class="btn btn-primary btn-block btn-lg" style="margin-bottom:10px" onclick="addToCart('gtp','Gaming Thumbnail Pack',299,'🎮','Thumbnails');updateCartBadge()">
+        <div class="buy-feats" id="buy-feats"></div>
+        <button class="btn btn-primary btn-block btn-lg" style="margin-bottom:9px" onclick="addToCart('gtp','Gaming Thumbnail Pack',299,'🎮','Thumbnails');updateCartBadge()">
           🛒 Add to Cart
         </button>
-        <button class="btn btn-secondary btn-block" style="padding:13px;font-size:15px;margin-bottom:14px" onclick="addToCart('gtp','Gaming Thumbnail Pack',299,'🎮','Thumbnails');setTimeout(()=>window.location='cart.html',300)">
+        <button class="btn btn-secondary btn-block" style="padding:12px;font-size:15px;margin-bottom:13px" onclick="addToCart('gtp','Gaming Thumbnail Pack',299,'🎮','Thumbnails');setTimeout(()=>location.href='cart.html',400)">
           ⚡ Buy Now
         </button>
-        <div style="display:flex;gap:8px;margin-bottom:16px">
-          <button class="btn btn-secondary" style="flex:1;font-size:13px;padding:9px" onclick="showToast({icon:'👁️',title:'Live Preview',desc:'Opening preview...'})">Live Preview</button>
-          <button class="btn btn-secondary" style="flex:1;font-size:13px;padding:9px" onclick="showToast({icon:'🎬',title:'Demo',desc:'Opening demo...'})">View Demo</button>
+        <div style="display:flex;gap:8px;margin-bottom:13px">
+          <button class="btn btn-secondary btn-sm" style="flex:1" onclick="showToast('👁️','Preview','Opening live preview...')">Live Preview</button>
+          <button class="btn btn-secondary btn-sm" style="flex:1" onclick="showToast('🎬','Demo','Opening demo...')">View Demo</button>
         </div>
-        <p class="coins-note">🪙 You will earn <span>40 PandaX Coins</span> with this purchase!</p>
+        <p class="coins-note">🪙 Earn <span>40 PandaX Coins</span> with this purchase!</p>
+      </div>
+      <div style="height:14px"></div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-secondary btn-sm" style="flex:1" onclick="toggleWishlist('gtp',this)">🤍 Wishlist</button>
+        <button class="btn btn-secondary btn-sm" style="flex:1" onclick="showToast('↗','Shared!','Link copied!')">↗ Share</button>
+        <button class="btn btn-secondary btn-sm" style="flex:1" onclick="showToast('🚩','Reported','Thank you.')">🚩 Report</button>
       </div>
     </div>
 
-    <!-- ── SELLER & SECURE ── -->
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <div class="seller-panel">
-        <div class="seller-panel-title">Seller Information</div>
-        <div class="seller-info-top">
-          <div class="seller-logo">🐼</div>
-          <div>
-            <div class="seller-name">PandaStudioX</div>
-            <div class="seller-level">⭐ Top Rated Seller</div>
-          </div>
+    <!-- SELLER + SECURE -->
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="sel-panel">
+        <div class="sel-panel-ttl">Seller Information</div>
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px">
+          <div class="sel-logo">🐼</div>
+          <div><div style="font-weight:800;font-size:14.5px">PandaStudioX</div><div style="font-size:12px;color:var(--accent);font-weight:600">⭐ Top Rated Seller</div></div>
         </div>
-        <div class="seller-stats">
-          <div><span class="seller-stat-val">856</span><div class="seller-stat-label">Products</div></div>
-          <div><span class="seller-stat-val">24.5K</span><div class="seller-stat-label">Sales</div></div>
-          <div><span class="seller-stat-val">4.9</span><div class="seller-stat-label">Rating</div></div>
+        <div class="sel-stats">
+          <div><span class="sel-stat-v">856</span><div class="sel-stat-l">Products</div></div>
+          <div><span class="sel-stat-v">24.5K</span><div class="sel-stat-l">Sales</div></div>
+          <div><span class="sel-stat-v">4.9</span><div class="sel-stat-l">Rating</div></div>
         </div>
-        <button class="btn btn-secondary btn-block btn-sm" onclick="showToast({icon:'🛒',title:'View Store',desc:'Opening seller store...'})">View Store</button>
+        <button class="btn btn-secondary btn-block btn-sm" onclick="showToast('🛒','View Store','Opening seller store...')">View Store</button>
       </div>
 
-      <div class="secure-panel">
-        <div style="font-weight:800;font-size:13.5px;margin-bottom:12px;font-family:var(--font2)">Secure Payment</div>
-        <div class="secure-item"><span class="secure-icon">🔒</span> 100% Secure Payment</div>
-        <div class="secure-item"><span class="secure-icon">⚡</span> Instant Download</div>
-        <div class="secure-item"><span class="secure-icon">↩️</span> Money Back Guarantee</div>
-      </div>
-
-      <!-- Related actions -->
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn btn-secondary btn-sm" onclick="toggleWishlist('gtp',this)">🤍 Wishlist</button>
-        <button class="btn btn-secondary btn-sm" onclick="shareProduct()">↗ Share</button>
-        <button class="btn btn-secondary btn-sm" onclick="showToast({icon:'🚩',title:'Reported',desc:'Thank you for your report.'})">🚩 Report</button>
+      <div class="sec-panel">
+        <div style="font-weight:800;font-size:13px;margin-bottom:11px;font-family:'Space Grotesk',sans-serif">Secure Payment</div>
+        <div class="sec-row"><span class="sec-icon">🔒</span>100% Secure Payment</div>
+        <div class="sec-row"><span class="sec-icon">⚡</span>Instant Download</div>
+        <div class="sec-row"><span class="sec-icon">↩️</span>Money Back Guarantee</div>
       </div>
     </div>
 
   </div>
 
-  <!-- RELATED PRODUCTS -->
-  <div style="margin-top:52px">
-    <h2 style="font-family:var(--font2);font-size:22px;font-weight:800;margin-bottom:22px">Related Products</h2>
-    <div class="products-grid" id="related-grid"></div>
+  <!-- RELATED -->
+  <div style="margin-top:48px">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;margin-bottom:20px">Related Products</h2>
+    <div class="prods-grid" id="related-grid"></div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer class="footer">
 <div class="footer-inner">
   <div class="footer-grid">
-    <div><div class="footer-brand-logo"><div class="footer-brand-emoji">🐼</div>PandaStudioX</div><p class="footer-desc">The premium digital marketplace for creators worldwide.</p></div>
-    <div><div class="footer-col-title">Shop</div><div class="footer-links"><a class="footer-link" href="shop.html">All Products</a><a class="footer-link" href="#">Thumbnails</a><a class="footer-link" href="#">Gaming</a></div></div>
-    <div><div class="footer-col-title">Support</div><div class="footer-links"><a class="footer-link" href="support.html">Help Center</a><a class="footer-link" href="#">Refund Policy</a></div></div>
+    <div><div class="footer-logo"><div class="footer-logo-icon">🐼</div>PandaStudioX</div><p class="footer-desc">The premium digital marketplace.</p></div>
+    <div><div class="footer-col-title">Shop</div><div class="footer-links"><a class="footer-link" href="shop.html">Browse</a><a class="footer-link" href="support.html">Support</a></div></div>
     <div><div class="footer-col-title">Legal</div><div class="footer-links"><a class="footer-link" href="#">Terms</a><a class="footer-link" href="#">Privacy</a><a class="footer-link" href="#">Licenses</a></div></div>
+    <div><div class="footer-col-title">Help</div><div class="footer-links"><a class="footer-link" href="support.html">Help Center</a><a class="footer-link" href="#">Refund Policy</a></div></div>
   </div>
-  <div class="footer-bottom"><div class="footer-copy">© 2026 PandaStudioX.</div><div class="footer-version">v3.0</div></div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 PandaStudioX.</div><div style="font-size:12px;color:var(--muted2)">v4.0</div></div>
 </div>
 </footer>
 </div>
-<div class="toast-container" id="toast-container"></div>
-<button class="scroll-top" id="scroll-top">↑</button>
-<script src="js/script.js"></script>
+<div class="toast-box" id="toast-box"></div>
+<button class="scroll-top-btn" id="scrollTopBtn">↑</button>
+<script src="js/app.js"></script>
 <script>
-// Ticker
-const tickerEl=document.getElementById('ticker');
-const ti=['🔥 Gaming Thumbnail Pack — Bestseller!','⭐ 142 verified reviews','💰 Instant download after purchase','🎮 Used by 320+ creators'];
-tickerEl.innerHTML=[0,1].map(()=>ti.map(t=>`<div class="ticker-item">${t}<div class="ticker-dot"></div></div>`).join('')).join('');
+buildTicker(['🔥 Gaming Thumbnail Pack — Bestseller!','⭐ 142 verified reviews','💰 Instant download after purchase']);
 
-// Gallery thumbs
-const GALLERY = [
-  {icon:'🎮',bg:'thumb-gaming',label:'Preview 1'},
-  {icon:'⚔️',bg:'thumb-gaming',label:'Preview 2'},
-  {icon:'🏆',bg:'thumb-gaming',label:'Preview 3'},
-  {icon:'💥',bg:'thumb-gaming',label:'Preview 4'},
-  {icon:'🎯',bg:'thumb-gaming',label:'Preview 5'},
+const GALLERY_ITEMS = [
+  {icon:'🎮',bg:'pt-gaming'},{icon:'⚔️',bg:'pt-gaming'},{icon:'🏆',bg:'pt-gaming'},
+  {icon:'💥',bg:'pt-gaming'},{icon:'🎯',bg:'pt-gaming'},
 ];
-let activeImg=0;
-document.getElementById('gallery-thumbs').innerHTML = GALLERY.map((g,i)=>`
-  <div class="gallery-thumb ${i===0?'active':''}" data-icon="${g.icon}" data-bg="${g.bg}" id="thumb-${i}" onclick="selectImg(${i})">
-    <div class="gallery-thumb-inner ${g.bg}" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:28px">${g.icon}</div>
-  </div>`).join('');
-function selectImg(i){
-  activeImg=i;
-  document.querySelectorAll('.gallery-thumb').forEach((t,j)=>t.classList.toggle('active',j===i));
-  const g=GALLERY[i];
-  document.getElementById('main-prod-icon').textContent=g.icon;
-  document.getElementById('main-prod-bg').className='gallery-main-inner '+g.bg;
-}
-function prevImg(){selectImg((activeImg-1+GALLERY.length)%GALLERY.length)}
-function nextImg(){selectImg((activeImg+1)%GALLERY.length)}
+initGallery(GALLERY_ITEMS);
 
-// Product title + meta
-document.getElementById('panel-description').insertAdjacentHTML('beforebegin',`
-  <div class="product-detail-info" style="display:none"></div>`);
+document.getElementById('g-thumbs').innerHTML = GALLERY_ITEMS.map((g,i) =>
+  `<div class="g-thumb${i===0?' active':''}" onclick="selectImg(${i})" style="background:var(--card)">
+    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:26px" class="${g.bg}">${g.icon}</div>
+  </div>`
+).join('');
 
-// Injecting title above tabs via DOM
-const titleBlock = document.createElement('div');
-titleBlock.style.cssText = 'margin-bottom:20px';
-titleBlock.innerHTML = `
-  <span class="badge badge-bestseller" style="margin-bottom:10px;display:inline-flex">Bestseller</span>
-  <h1 class="product-detail-title">Gaming Thumbnail Pack</h1>
-  <div class="product-detail-meta">
-    <div class="stars" style="font-size:15px">★★★★★</div>
-    <span style="font-weight:700;font-size:14.5px">4.8 (142 Reviews)</span>
-    <span style="color:var(--muted)">·</span>
-    <span style="font-size:13.5px;color:var(--text2)">🛒 320+ Sales</span>
-  </div>
-  <div class="product-detail-desc">High quality gaming thumbnails for YouTube, Twitch and more. Perfect for all games!</div>
-  <div class="product-tags-row">
-    <span class="product-tag">✓ High Quality</span>
-    <span class="product-tag">✓ Easy to Edit</span>
-    <span class="product-tag">✓ PSD Files</span>
-    <span class="product-tag">✓ Commercial Use</span>
-  </div>`;
-document.querySelector('.product-gallery').closest('div').insertBefore(titleBlock, document.querySelector('.product-gallery'));
+const INCLUDED = ['25+ Premium Thumbnails','PSD Source Files','Free Fonts Used','High Quality Assets','Commercial License','1280×720px Resolution','Photoshop & Canva Compatible','Lifetime Updates'];
+document.getElementById('incl-list').innerHTML = INCLUDED.map(i =>
+  `<div class="incl-item"><span class="incl-check">✓</span>${i}</div>`
+).join('');
 
-// Included list
-const INCLUDED = ['25+ Premium Thumbnails','PSD Source Files','Free Fonts Used','High Quality Assets','Commercial License','1280×720px Resolution','Photoshop & Canva Compatible','Regular Updates'];
-document.getElementById('included-list').innerHTML = INCLUDED.map(i=>`
-  <div class="product-included-item"><span class="product-included-check">✓</span>${i}</div>`).join('');
+document.getElementById('buy-feats').innerHTML = ['Personal Use','Commercial Use','YouTube, Twitch, Facebook','Add to unlimited projects','Lifetime Updates'].map(f =>
+  `<div class="buy-feat"><span class="buy-feat-chk">✓</span>${f}</div>`
+).join('');
 
-// Requirements
-const REQS = ['Adobe Photoshop CS6+','Canva (free version)','ZIP extractor','1GB free space','Windows / Mac / Linux'];
-document.getElementById('requirements').innerHTML = REQS.map(r=>`<div style="display:flex;gap:7px;align-items:center"><span style="color:var(--accent)">▸</span>${r}</div>`).join('');
-
-// Buy features
-const BUY_FEATURES = ['Personal Use','Commercial Use','YouTube, Twitch, Facebook','Add to unlimited projects','Lifetime Updates'];
-document.getElementById('buy-features').innerHTML = BUY_FEATURES.map(f=>`
-  <div class="buy-feature-item"><span class="buy-feature-check">✓</span>${f}</div>`).join('');
-
-// Rating breakdown
 const RATINGS = [[5,78],[4,47],[3,12],[2,3],[1,2]];
-document.getElementById('rating-breakdown').innerHTML = RATINGS.map(([s,c])=>`
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-    <span style="font-size:12px;color:var(--muted);width:14px;text-align:right">${s}</span>
-    <span style="color:var(--star);font-size:13px">★</span>
-    <div class="progress-bar" style="flex:1"><div class="progress-fill" style="width:${Math.round(c/142*100)}%"></div></div>
-    <span style="font-size:12px;color:var(--muted);width:28px">(${c})</span>
-  </div>`).join('');
+document.getElementById('rating-breakdown').innerHTML = RATINGS.map(([s,c]) =>
+  `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+    <span style="font-size:12px;color:var(--muted);width:13px;text-align:right">${s}</span>
+    <span style="color:var(--star)">★</span>
+    <div class="progress-bar" style="flex:1;height:7px"><div class="progress-fill" data-pct="${Math.round(c/142*100)}"></div></div>
+    <span style="font-size:12px;color:var(--muted);width:26px">(${c})</span>
+  </div>`
+).join('');
 
-// Reviews
 const REVIEWS = [
-  {avatar:'🎮',name:'GamezKing',date:'Jun 14, 2026',stars:5,text:'Absolutely insane quality. I tried at least 20 thumbnail packs before this and nothing comes close. My CTR jumped from 4% to 9% in under 2 weeks. The PSD files are super clean and easy to edit.'},
-  {avatar:'📺',name:'ContentCreator99',date:'Jun 10, 2026',stars:5,text:'Best purchase I have made for my channel. The designs are modern, vibrant and professional. My subscribers even started commenting on how the thumbnails improved.'},
-  {avatar:'🎯',name:'ProGamer_X',date:'Jun 6, 2026',stars:4,text:'Really good quality overall. Would have liked a few more gaming niche templates but the existing ones are all excellent. Will definitely buy the next pack too.'},
-  {avatar:'🏆',name:'TechReviewPro',date:'Jun 2, 2026',stars:5,text:'Used these for my tech review gaming videos. Perfect. The fonts are free, source files are editable and the colors pop on any device. 5 stars no question.'},
+  {av:'🎮',name:'GamezKing',date:'Jun 14, 2026',stars:5,text:'Absolutely insane quality. My CTR jumped from 4% to 9% in under 2 weeks. The PSD files are super clean and easy to edit.'},
+  {av:'📺',name:'ContentCreator99',date:'Jun 10, 2026',stars:5,text:'Best purchase for my channel. The designs are modern, vibrant and professional. My subscribers noticed the improvement immediately.'},
+  {av:'🎯',name:'ProGamer_X',date:'Jun 6, 2026',stars:4,text:'Really good quality overall. Would have liked a few more templates but the existing ones are excellent. Will definitely buy more.'},
 ];
-document.getElementById('reviews-list').innerHTML = REVIEWS.map(r=>`
-  <div class="review-card">
-    <div class="review-header">
-      <div class="review-avatar">${r.avatar}</div>
+document.getElementById('reviews-list').innerHTML = REVIEWS.map(r =>
+  `<div class="rev-card">
+    <div class="rev-header">
+      <div class="rev-avatar">${r.av}</div>
       <div style="flex:1">
         <div style="font-weight:700;font-size:14px">${r.name}</div>
         <div style="display:flex;align-items:center;gap:8px;margin-top:3px">
-          <span class="stars" style="font-size:13px">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</span>
+          <span class="stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</span>
           <span style="font-size:12px;color:var(--muted)">${r.date}</span>
         </div>
       </div>
-      <button style="background:none;border:none;font-size:13px;color:var(--muted);cursor:pointer" onclick="showToast({icon:'👍',title:'Helpful',desc:'Marked as helpful!'})">👍 Helpful</button>
+      <button style="background:none;border:none;font-size:12.5px;color:var(--muted);cursor:pointer" onclick="showToast('👍','Helpful','Marked as helpful!')">👍 Helpful</button>
     </div>
-    <p class="review-text">${r.text}</p>
-  </div>`).join('');
+    <div class="rev-text">${r.text}</div>
+  </div>`
+).join('');
 
-// Comments
 const COMMENTS = [
-  {avatar:'❓',name:'NewCreator',date:'Jun 13, 2026',text:'Does this work with Canva Free or only Canva Pro?'},
-  {avatar:'🐼',name:'PandaStudioX',date:'Jun 13, 2026',text:'Hi! Yes, it works with both Canva Free and Pro. All elements used are available in the free version. Enjoy! 🎉',seller:true},
-  {avatar:'🎮',name:'GamerBoy77',date:'Jun 11, 2026',text:'Can I use this for thumbnails on multiple YouTube channels?'},
-  {avatar:'🐼',name:'PandaStudioX',date:'Jun 11, 2026',text:'The standard license covers personal use on your own channels. For agencies or client work, please check the Extended License option.',seller:true},
+  {av:'❓',name:'NewCreator',date:'Jun 13, 2026',text:'Does this work with Canva Free?',seller:false},
+  {av:'🐼',name:'PandaStudioX',date:'Jun 13, 2026',text:'Hi! Yes, it works with both Canva Free and Pro. All elements are available in the free version. Enjoy! 🎉',seller:true},
+  {av:'🎮',name:'GamerBoy77',date:'Jun 11, 2026',text:'Can I use this for multiple YouTube channels?',seller:false},
+  {av:'🐼',name:'PandaStudioX',date:'Jun 11, 2026',text:'The standard license covers personal use on your own channels. For agency/client work, check the Extended License.',seller:true},
 ];
-document.getElementById('comments-list').innerHTML = COMMENTS.map(c=>`
-  <div style="display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--border)">
-    <div style="width:40px;height:40px;border-radius:50%;background:${c.seller?'var(--accent)':'linear-gradient(135deg,var(--accent),var(--accent2))'};display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">${c.avatar}</div>
+document.getElementById('comments-list').innerHTML = COMMENTS.map(c =>
+  `<div style="display:flex;gap:11px;padding:12px 0;border-bottom:1px solid var(--border)">
+    <div style="width:38px;height:38px;border-radius:50%;background:${c.seller?'var(--accent)':'linear-gradient(135deg,var(--accent),var(--accent2))'};display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">${c.av}</div>
     <div style="flex:1">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-        <span style="font-weight:700;font-size:14px">${c.name}</span>
-        ${c.seller?'<span class="badge badge-accent" style="font-size:10px">Seller</span>':''}
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:5px;flex-wrap:wrap">
+        <span style="font-weight:700;font-size:13.5px">${c.name}</span>
+        ${c.seller?'<span class="badge b-acc" style="font-size:9.5px">Seller</span>':''}
         <span style="font-size:12px;color:var(--muted)">${c.date}</span>
       </div>
-      <div style="font-size:14px;color:var(--text2);line-height:1.6">${c.text}</div>
+      <div style="font-size:13.5px;color:var(--text2);line-height:1.6">${c.text}</div>
     </div>
-  </div>`).join('');
+  </div>`
+).join('');
 
-// Changelog
 const CHANGELOG = [
-  {v:'v2.3',date:'Jun 2026',changes:['Added 5 new Minecraft-themed thumbnails','Improved PSD file organization','Fixed font compatibility issue for Mac users']},
-  {v:'v2.2',date:'Apr 2026',changes:['Added Fortnite & COD niche templates','Canva templates added','Color palette expanded']},
+  {v:'v2.3',date:'Jun 2026',changes:['Added 5 new Minecraft-themed thumbnails','Improved PSD file organization','Fixed font compatibility on Mac']},
+  {v:'v2.2',date:'Apr 2026',changes:['Added Fortnite & COD templates','Canva templates added','Color palette expanded']},
   {v:'v2.0',date:'Feb 2026',changes:['Full redesign of all 25 templates','4K resolution support','Commercial license added']},
-  {v:'v1.0',date:'Jan 2026',changes:['Initial release with 15 templates']},
 ];
-document.getElementById('changelog-list').innerHTML = CHANGELOG.map(c=>`
-  <div style="padding:18px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-      <span class="badge badge-accent">${c.v}</span>
+document.getElementById('changelog-list').innerHTML = CHANGELOG.map(c =>
+  `<div style="padding:16px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin-bottom:9px">
+    <div style="display:flex;align-items:center;gap:9px;margin-bottom:10px">
+      <span class="badge b-acc">${c.v}</span>
       <span style="font-size:12px;color:var(--muted)">${c.date}</span>
     </div>
-    <ul style="display:flex;flex-direction:column;gap:7px">${c.changes.map(ch=>`<li style="font-size:14px;color:var(--text2);display:flex;gap:8px"><span style="color:var(--accent3);font-weight:700">✓</span>${ch}</li>`).join('')}</ul>
-  </div>`).join('');
+    <ul style="display:flex;flex-direction:column;gap:6px">${c.changes.map(ch=>`<li style="font-size:13.5px;color:var(--text2);display:flex;gap:7px"><span style="color:var(--accent3);font-weight:700">✓</span>${ch}</li>`).join('')}</ul>
+  </div>`
+).join('');
 
-// FAQ
 const FAQS = [
   {q:'Does this work with free Canva?',a:'Yes! All templates are fully compatible with Canva Free. No Pro subscription needed.'},
-  {q:'Can I use this commercially on YouTube?',a:'Absolutely. The Standard License covers all YouTube, Twitch, Facebook and personal commercial use.'},
+  {q:'Can I use this commercially on YouTube?',a:'Absolutely. The Standard License covers YouTube, Twitch, Facebook and all personal commercial use.'},
   {q:'What format does the download come in?',a:'You receive a ZIP file containing PSD files, PNG exports, and Canva template links.'},
-  {q:'Do I get free updates when new templates are added?',a:'Yes, all future updates are free forever once you purchase.'},
-  {q:'What Photoshop version is required?',a:'Adobe Photoshop CS6 or newer. The templates also work in Photoshop CC 2015+.'},
+  {q:'Do I get free updates?',a:'Yes, all future updates are free forever once you purchase.'},
+  {q:'What Photoshop version is needed?',a:'Adobe Photoshop CS6 or newer. Also works in Photoshop CC 2015+.'},
 ];
-document.getElementById('faq-list').innerHTML = FAQS.map(f=>`
-  <div class="faq-item">
+document.getElementById('faq-list').innerHTML = FAQS.map(f =>
+  `<div class="faq-item">
     <div class="faq-q">${f.q}<span class="faq-arrow">▾</span></div>
     <div class="faq-a"><p>${f.a}</p></div>
-  </div>`).join('');
-initFAQ();
+  </div>`
+).join('');
 
-// Related products
 const RELATED = [
-  {id:'ytp', icon:'📺',bg:'thumb-youtube', title:'YouTube Thumbnail Pack',cat:'Thumbnails',price:349,orig:null,badge:null,rating:4.6,reviews:231,sales:290},
-  {id:'rgfx',icon:'🎲',bg:'thumb-roblox',  title:'Roblox GFX Pack',      cat:'Roblox',    price:399,orig:699,badge:'sale',   rating:4.6,reviews:78, sales:150},
-  {id:'pop', icon:'📡',bg:'thumb-overlay', title:'Premium Overlays',     cat:'Graphics',  price:299,orig:599,badge:'sale',   rating:4.6,reviews:45, sales:90},
-  {id:'muik',icon:'🖥️',bg:'thumb-ui',      title:'Modern UI Kit',        cat:'UI Kits',   price:599,orig:null,badge:'bestseller',rating:4.9,reviews:112,sales:400},
+  {id:'ytp', icon:'📺',bg:'pt-youtube',  title:'YouTube Thumbnail Pack', cat:'Thumbnails', sub:'40+ Templates',  price:349,orig:null,badge:null,      rating:4.6,reviews:231,sales:290},
+  {id:'rgfx',icon:'🎲',bg:'pt-roblox',   title:'Roblox GFX Pack',        cat:'Roblox',     sub:'50+ Assets',     price:399,orig:699, badge:'sale',    rating:4.6,reviews:78, sales:150},
+  {id:'pop', icon:'📡',bg:'pt-overlay',  title:'Premium Overlays Pack',  cat:'Graphics',   sub:'30+ Overlays',   price:299,orig:599, badge:'sale',    rating:4.6,reviews:45, sales:90},
+  {id:'muik',icon:'🖥️',bg:'pt-ui',       title:'Modern UI Kit',          cat:'UI Kits',    sub:'120+ Components',price:599,orig:null,badge:'bestseller',rating:4.9,reviews:112,sales:400},
 ];
-document.getElementById('related-grid').innerHTML = RELATED.map(p=>`
-  <div class="product-card reveal" onclick="location='product.html?id=${p.id}'">
-    <div class="prod-thumb" style="height:165px">
-      <div class="prod-thumb-inner ${p.bg}">
-        <div class="thumb-glow"></div><div class="thumb-grid-lines"></div>
-        <span class="thumb-icon">${p.icon}</span>
-        <div class="thumb-title">${p.title}</div>
-        ${p.badge?`<div class="thumb-tag"><span class="badge badge-${p.badge}">${p.badge.toUpperCase()}</span></div>`:''}
-        <div class="thumb-rating-overlay">⭐ ${p.rating}</div>
-      </div>
-    </div>
-    <div class="product-info">
-      <div class="product-title">${p.title}</div>
-      <div class="product-rating"><span class="stars">${'★'.repeat(Math.floor(p.rating))}</span><span class="rating-num">${p.rating}</span><span class="rating-count">(${p.reviews})</span></div>
-      <div class="product-price-row"><div><span class="product-price">₹${p.price}</span>${p.orig?`<span class="product-original">₹${p.orig}</span>`:''}</div></div>
-      <div class="product-actions">
-        <button class="btn btn-primary btn-sm" style="flex:1" onclick="event.stopPropagation();addToCart('${p.id}','${p.title}',${p.price},'${p.icon}','${p.cat}')">Add to Cart</button>
-        <button class="btn btn-secondary btn-sm btn-icon" onclick="event.stopPropagation();toggleWishlist('${p.id}',this)">🤍</button>
-      </div>
-    </div>
-  </div>`).join('');
-
-function shareProduct() {
-  navigator.clipboard?.writeText(location.href).then(()=>showToast({icon:'📋',title:'Link Copied!',desc:'Share this product with your friends.'})).catch(()=>showToast({icon:'↗',title:'Share',desc:'Copy the URL from your browser.'}));
-}
+document.getElementById('related-grid').innerHTML = RELATED.map(p => makeProductCard(p, false)).join('');
 </script>
 </body>
 </html>

@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>PandaStudioX — Premium Digital Marketplace</title>
-<meta name="description" content="Buy premium gaming thumbnails, Minecraft assets, Roblox packs, Discord bots, templates and more. The #1 creator marketplace."/>
+<meta name="description" content="Buy premium gaming thumbnails, Minecraft assets, Roblox packs, Discord bots, UI kits, templates and 1000+ more products."/>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐼</text></svg>"/>
 <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 <canvas id="bg-canvas"></canvas>
-<div class="page-wrap">
+<div class="page">
 
-<!-- ── TICKER ── -->
-<div class="ticker-bar">
-  <div class="ticker-inner" id="ticker"></div>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track" id="ticker-track"></div>
 </div>
 
-<!-- ── NAVBAR ── -->
-<nav class="navbar">
+<!-- NAV -->
+<nav class="nav">
   <a class="nav-logo" href="index.html">
-    <div class="nav-logo-emoji">🐼</div>
+    <div class="logo-icon">🐼</div>
     PandaStudioX
   </a>
   <div class="nav-links">
-    <a class="nav-link active" href="index.html">Home</a>
+    <a class="nav-link" href="index.html">Home</a>
     <a class="nav-link" href="shop.html">Shop</a>
     <a class="nav-link" href="shop.html">Categories</a>
     <a class="nav-link" href="community.html">Community</a>
@@ -31,363 +32,308 @@
     <a class="nav-link" href="support.html">Contact</a>
   </div>
   <div class="nav-search">
-    <input class="search-input" placeholder="Search for products..." autocomplete="off"/>
+    <input class="nav-search-input" placeholder="Search for products..." autocomplete="off"/>
     <span class="nav-search-icon">🔍</span>
-    <div class="search-dropdown"></div>
+    <div class="search-drop"></div>
   </div>
   <div class="nav-right">
     <div style="position:relative">
-      <button class="theme-btn" id="theme-toggle-btn"></button>
+      <button class="theme-btn"></button>
       <div class="theme-panel" id="theme-panel"></div>
     </div>
-    <a href="cart.html" class="cart-btn">🛒<span class="cart-count">0</span></a>
+    <a href="cart.html" class="cart-btn">🛒<span class="cart-n">0</span></a>
     <a href="dashboard.html" class="user-btn">
-      <div class="user-avatar">🐼</div>
-      <div class="user-info">
-        <div class="user-name">PandaX</div>
-        <div class="user-plan">Premium</div>
-      </div>
+      <div class="u-avatar">🐼</div>
+      <div><div class="u-name">PandaX</div><div class="u-plan">Premium</div></div>
     </a>
   </div>
-  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+  <button class="mob-btn">☰</button>
+</nav>
+<nav class="mob-nav">
+  <a class="mob-link" href="index.html">🏠 Home</a>
+  <a class="mob-link" href="shop.html">🛒 Shop</a>
+  <a class="mob-link" href="community.html">👥 Community</a>
+  <a class="mob-link" href="blog.html">📝 Blog</a>
+  <a class="mob-link" href="dashboard.html">📊 Dashboard</a>
+  <a class="mob-link" href="cart.html">🛒 Cart</a>
+  <a class="mob-link" href="support.html">💬 Support</a>
 </nav>
 
-<!-- Mobile nav -->
-<nav class="mobile-nav">
-  <a class="mobile-nav-link active" href="index.html">🏠 Home</a>
-  <a class="mobile-nav-link" href="shop.html">🛒 Shop</a>
-  <a class="mobile-nav-link" href="community.html">👥 Community</a>
-  <a class="mobile-nav-link" href="blog.html">📝 Blog</a>
-  <a class="mobile-nav-link" href="dashboard.html">📊 Dashboard</a>
-  <a class="mobile-nav-link" href="cart.html">🛒 Cart</a>
-  <a class="mobile-nav-link" href="support.html">💬 Support</a>
-</nav>
-
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-label fade-up"><div class="hero-label-dot"></div> #1 Digital Creator Marketplace</div>
-  <h1 class="hero-title fade-up-1">
-    Buy Premium<br><span class="hero-grad">Digital Products</span><br>for Creators
-  </h1>
-  <p class="hero-sub fade-up-2">Gaming thumbnails, Minecraft assets, Roblox packs, Discord bots, UI kits, website templates and 1000+ more products — all in one place.</p>
-  <div class="hero-actions fade-up-3">
+  <div class="hero-label fu"><div class="hero-dot"></div> #1 Digital Creator Marketplace</div>
+  <h1 class="hero-title fu1">Buy Premium<br><span class="hero-grad">Digital Products</span><br>for Creators</h1>
+  <p class="hero-sub fu2">Gaming thumbnails, Minecraft assets, Roblox packs, Discord bots, UI kits, templates and 1200+ more — all in one place.</p>
+  <div class="hero-btns fu3">
     <a href="shop.html" class="btn btn-primary btn-xl">Browse Products →</a>
-    <a href="shop.html?seller=1" class="btn btn-secondary btn-xl">Start Selling</a>
+    <a href="dashboard.html" class="btn btn-secondary btn-xl">Start Selling</a>
   </div>
-  <div class="hero-stats">
-    <div class="text-center"><span class="hero-stat-val" data-count="50" data-suffix="K+">0</span><div class="hero-stat-label">Happy Users</div></div>
-    <div class="text-center"><span class="hero-stat-val" data-count="1246" data-suffix="+">0</span><div class="hero-stat-label">Products</div></div>
-    <div class="text-center"><span class="hero-stat-val" data-count="500" data-suffix="+">0</span><div class="hero-stat-label">Sellers</div></div>
-    <div class="text-center"><span class="hero-stat-val" data-count="4.9" data-suffix="★">0</span><div class="hero-stat-label">Avg Rating</div></div>
-    <div class="text-center"><span class="hero-stat-val" data-count="2" data-prefix="₹" data-suffix="Cr+">0</span><div class="hero-stat-label">Paid to Creators</div></div>
+  <div class="hero-trust">
+    <div class="trust-item"><span class="trust-val" data-count="50" data-suffix="K+">0</span><div class="trust-label">Happy Users</div></div>
+    <div class="trust-item"><span class="trust-val" data-count="1246" data-suffix="+">0</span><div class="trust-label">Products</div></div>
+    <div class="trust-item"><span class="trust-val" data-count="500" data-suffix="+">0</span><div class="trust-label">Sellers</div></div>
+    <div class="trust-item"><span class="trust-val" data-count="4.9" data-suffix="★">0</span><div class="trust-label">Avg Rating</div></div>
+    <div class="trust-item"><span class="trust-val" data-count="2" data-prefix="₹" data-suffix="Cr+">0</span><div class="trust-label">Paid Out</div></div>
   </div>
 </section>
 
-<!-- ── CATEGORIES ── -->
-<section class="section" style="padding-top:32px">
-<div class="section-inner">
-  <div class="section-header center reveal">
-    <span class="section-label">Browse by Category</span>
-    <h2 class="section-title">Find What You Need</h2>
+<!-- CATEGORIES -->
+<section class="sec section-alt">
+<div class="sec-inner">
+  <div class="sec-hdr center reveal">
+    <span class="sec-label">Browse by Category</span>
+    <h2 class="sec-title">Find What You Need</h2>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px" id="home-cats"></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:13px" id="cats-grid"></div>
 </div>
 </section>
 
-<!-- ── TRENDING ── -->
-<section class="section" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-<div class="section-inner">
-  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px">
-    <div class="reveal">
-      <span class="section-label">Hot Right Now</span>
-      <h2 class="section-title" style="margin-bottom:0">Trending Products 🔥</h2>
-    </div>
+<!-- TRENDING -->
+<section class="sec">
+<div class="sec-inner">
+  <div class="sec-hdr-row">
+    <div class="reveal"><span class="sec-label">Hot Right Now</span><h2 class="sec-title" style="margin-bottom:0">Trending Products 🔥</h2></div>
     <a href="shop.html" class="btn btn-secondary reveal">View All →</a>
   </div>
-  <div class="products-grid" id="trending-grid"></div>
+  <div class="prods-grid" id="trending-grid"></div>
 </div>
 </section>
 
-<!-- ── NEW ARRIVALS ── -->
-<section class="section">
-<div class="section-inner">
-  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px">
-    <div class="reveal">
-      <span class="section-label">Just Dropped</span>
-      <h2 class="section-title" style="margin-bottom:0">New Arrivals ✨</h2>
-    </div>
-    <a href="shop.html?sort=new" class="btn btn-secondary reveal">See All New →</a>
+<!-- NEW ARRIVALS -->
+<section class="sec section-alt">
+<div class="sec-inner">
+  <div class="sec-hdr-row">
+    <div class="reveal"><span class="sec-label">Just Dropped</span><h2 class="sec-title" style="margin-bottom:0">New Arrivals ✨</h2></div>
+    <a href="shop.html" class="btn btn-secondary reveal">See All →</a>
   </div>
-  <div class="products-grid" id="new-grid"></div>
+  <div class="prods-grid" id="new-grid"></div>
 </div>
 </section>
 
-<!-- ── WHY US ── -->
-<section class="section" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-<div class="section-inner">
-  <div class="section-header center reveal">
-    <span class="section-label">Why PandaStudioX</span>
-    <h2 class="section-title">The Best Place to Buy & Sell</h2>
-    <p class="section-sub">We built the marketplace creators actually want — fair commissions, instant payouts, premium products.</p>
+<!-- WHY US -->
+<section class="sec">
+<div class="sec-inner">
+  <div class="sec-hdr center reveal">
+    <span class="sec-label">Why PandaStudioX</span>
+    <h2 class="sec-title">Built for Creators</h2>
+    <p class="sec-sub">Fair commissions, instant downloads, premium quality — the marketplace creators actually want.</p>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px" id="features-grid"></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px" id="feats-grid"></div>
 </div>
 </section>
 
-<!-- ── TESTIMONIALS ── -->
-<section class="section">
-<div class="section-inner">
-  <div class="section-header center reveal">
-    <span class="section-label">What People Say</span>
-    <h2 class="section-title">Loved by Creators 💙</h2>
+<!-- TESTIMONIALS -->
+<section class="sec section-alt">
+<div class="sec-inner">
+  <div class="sec-hdr center reveal">
+    <span class="sec-label">Loved by Creators</span>
+    <h2 class="sec-title">Real Reviews 💙</h2>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px" id="testimonials-grid"></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px" id="testi-grid"></div>
 </div>
 </section>
 
-<!-- ── PRICING ── -->
-<section class="section" style="background:var(--bg2);border-top:1px solid var(--border)">
-<div class="section-inner">
-  <div class="section-header center reveal">
-    <span class="section-label">Simple Pricing</span>
-    <h2 class="section-title">Start Free, Scale with Us</h2>
-    <p class="section-sub">No hidden fees. No surprises.</p>
+<!-- PRICING -->
+<section class="sec">
+<div class="sec-inner">
+  <div class="sec-hdr center reveal">
+    <span class="sec-label">Simple Pricing</span>
+    <h2 class="sec-title">Start Free, Scale Up</h2>
+    <p class="sec-sub">No hidden fees. No surprises. Cancel anytime.</p>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:900px;margin:0 auto" id="pricing-grid"></div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:880px;margin:0 auto" id="pricing-grid"></div>
 </div>
 </section>
 
-<!-- ── CTA ── -->
-<section class="section" style="text-align:center">
-<div class="section-inner">
-  <div style="max-width:620px;margin:0 auto">
-    <span class="section-label reveal">Ready to Start?</span>
-    <h2 class="section-title reveal" style="font-size:clamp(28px,5vw,52px)">Join 50,000+ creators<br>on <span class="hero-grad">PandaStudioX</span></h2>
-    <p class="section-sub reveal" style="margin:14px auto 36px">Buy premium assets or sell your creations. Free to join, instant access.</p>
-    <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a href="shop.html" class="btn btn-primary btn-xl">Browse Marketplace →</a>
-      <a href="dashboard.html" class="btn btn-secondary btn-xl">Start Selling Free</a>
-    </div>
-    <div style="display:flex;gap:24px;justify-content:center;margin-top:24px;flex-wrap:wrap" class="reveal">
-      <span style="font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="color:var(--accent3);font-weight:800">✓</span>No credit card needed</span>
-      <span style="font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="color:var(--accent3);font-weight:800">✓</span>Free plan forever</span>
-      <span style="font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="color:var(--accent3);font-weight:800">✓</span>90% revenue share</span>
-    </div>
+<!-- CTA -->
+<section class="sec section-alt" style="text-align:center">
+<div class="sec-inner" style="max-width:600px;margin:0 auto">
+  <span class="sec-label reveal">Ready?</span>
+  <h2 class="sec-title reveal" style="font-size:clamp(26px,5vw,50px)">Join 50,000+ creators<br>on <span class="hero-grad">PandaStudioX</span></h2>
+  <p class="sec-sub reveal" style="margin:12px auto 32px">Buy premium assets or sell your creations. Free to join, instant access to everything.</p>
+  <div class="reveal" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a href="shop.html" class="btn btn-primary btn-xl">Browse Marketplace →</a>
+    <a href="dashboard.html" class="btn btn-secondary btn-xl">Start Selling Free</a>
+  </div>
+  <div style="display:flex;gap:22px;justify-content:center;margin-top:22px;flex-wrap:wrap" class="reveal">
+    <span style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="color:var(--accent3);font-weight:800">✓</span>No credit card</span>
+    <span style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="color:var(--accent3);font-weight:800">✓</span>Free plan forever</span>
+    <span style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="color:var(--accent3);font-weight:800">✓</span>90% revenue share</span>
   </div>
 </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer class="footer">
 <div class="footer-inner">
   <div class="footer-grid">
     <div>
-      <div class="footer-brand-logo"><div class="footer-brand-emoji">🐼</div>PandaStudioX</div>
-      <p class="footer-desc">The premium digital marketplace for creators, gamers and developers worldwide. Buy, sell and grow.</p>
+      <div class="footer-logo"><div class="footer-logo-icon">🐼</div>PandaStudioX</div>
+      <p class="footer-desc">The premium digital marketplace for creators, gamers and developers worldwide.</p>
       <div class="footer-socials">
-        <button class="footer-social" title="Discord" onclick="showToast({icon:'🎮',title:'Discord',desc:'Join our server!'})">💬</button>
-        <button class="footer-social" title="Twitter">🐦</button>
-        <button class="footer-social" title="YouTube">📺</button>
-        <button class="footer-social" title="Instagram">📸</button>
+        <button class="footer-social" onclick="showToast('💬','Discord','Join our server — discord.gg/pandastudiox')">💬</button>
+        <button class="footer-social" onclick="showToast('🐦','Twitter','@PandaStudioX')">🐦</button>
+        <button class="footer-social" onclick="showToast('📺','YouTube','PandaStudioX on YouTube')">📺</button>
+        <button class="footer-social" onclick="showToast('📸','Instagram','@pandastudiox')">📸</button>
       </div>
     </div>
     <div>
       <div class="footer-col-title">Marketplace</div>
       <div class="footer-links">
         <a class="footer-link" href="shop.html">Browse All</a>
-        <a class="footer-link" href="shop.html">Thumbnails</a>
-        <a class="footer-link" href="shop.html">Gaming Assets</a>
-        <a class="footer-link" href="shop.html">Templates</a>
-        <a class="footer-link" href="shop.html">Source Code</a>
+        <a class="footer-link" href="shop.html?cat=thumbnails">Thumbnails</a>
+        <a class="footer-link" href="shop.html?cat=gaming">Gaming Assets</a>
+        <a class="footer-link" href="shop.html?cat=templates">Templates</a>
+        <a class="footer-link" href="shop.html?cat=source">Source Code</a>
       </div>
     </div>
     <div>
       <div class="footer-col-title">Sellers</div>
       <div class="footer-links">
-        <a class="footer-link" href="#">Start Selling</a>
+        <a class="footer-link" href="dashboard.html">Start Selling</a>
         <a class="footer-link" href="#">Seller Guide</a>
         <a class="footer-link" href="#">Revenue Split</a>
         <a class="footer-link" href="#">Payouts</a>
-        <a class="footer-link" href="#">Seller FAQ</a>
+        <a class="footer-link" href="support.html">Seller FAQ</a>
       </div>
     </div>
     <div>
       <div class="footer-col-title">Company</div>
       <div class="footer-links">
-        <a class="footer-link" href="about.html">About Us</a>
+        <a class="footer-link" href="#">About Us</a>
         <a class="footer-link" href="blog.html">Blog</a>
         <a class="footer-link" href="support.html">Support</a>
-        <a class="footer-link" href="#">Terms of Service</a>
-        <a class="footer-link" href="#">Privacy Policy</a>
+        <a class="footer-link" href="#">Terms</a>
+        <a class="footer-link" href="#">Privacy</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
     <div class="footer-copy">© 2026 PandaStudioX. All rights reserved.</div>
-    <div style="display:flex;gap:16px;align-items:center">
-      <span class="footer-version">v3.0</span>
-      <span style="font-size:12px;color:var(--muted2)">Made with ❤️ for creators</span>
-    </div>
+    <div style="font-size:12px;color:var(--muted2)">Made with ❤️ for creators · v4.0</div>
   </div>
 </div>
 </footer>
+</div><!-- end .page -->
 
-</div><!-- end page-wrap -->
-<div class="toast-container" id="toast-container"></div>
-<button class="scroll-top" id="scroll-top">↑</button>
+<div class="toast-box" id="toast-box"></div>
+<button class="scroll-top-btn" id="scrollTopBtn">↑</button>
 
-<script src="js/script.js"></script>
+<script src="js/app.js"></script>
 <script>
-// ── TICKER ──
-const TICKER_ITEMS = ['🔥 50% off Gaming Thumbnails today!','⭐ New drop: Minecraft Map Bundle','🎉 500+ new products added this month','💰 Sellers earning 90% revenue share','🆕 Roblox GFX Pack v3 is live','🏆 Top rated marketplace for creators'];
-const tickerEl = document.getElementById('ticker');
-tickerEl.innerHTML = [0,1].map(() => TICKER_ITEMS.map(t=>`<div class="ticker-item">${t}<div class="ticker-dot"></div></div>`).join('')).join('');
+/* Page-specific data */
+buildTicker([
+  '🔥 50% off Gaming Thumbnails today!',
+  '⭐ New drop: Minecraft Map Bundle v2',
+  '💰 Sellers earn 90% revenue share',
+  '🆕 1246 products and counting',
+  '🏆 #1 rated digital marketplace for creators',
+]);
 
-// ── CATEGORIES ──
 const CATS = [
-  {icon:'🎮',name:'Thumbnails',count:356,color:'#7c3aed',bg:'#1a0055'},
-  {icon:'⛏️',name:'Minecraft',count:156,color:'#22c55e',bg:'#0d2200'},
-  {icon:'🎲',name:'Roblox',count:98,color:'#3b82f6',bg:'#001a33'},
-  {icon:'🎨',name:'Graphics',count:204,color:'#f97316',bg:'#1a0800'},
-  {icon:'💬',name:'Discord',count:76,color:'#5865f2',bg:'#00001a'},
-  {icon:'💻',name:'Source Code',count:112,color:'#e11d48',bg:'#1a000d'},
-  {icon:'🖥️',name:'UI Kits',count:44,color:'#00cccc',bg:'#001a1a'},
-  {icon:'📚',name:'Templates',count:60,color:'#f59e0b',bg:'#1a1000'},
-  {icon:'🕹️',name:'Games',count:128,color:'#a855f7',bg:'#15003d'},
-  {icon:'🤖',name:'AI Tools',count:56,color:'#06b6d4',bg:'#001a22'},
+  {icon:'🎮',name:'Thumbnails',count:356,color:'#7c3aed',cat:'thumbnails'},
+  {icon:'⛏️',name:'Minecraft',count:156,color:'#22c55e',cat:'minecraft'},
+  {icon:'🎲',name:'Roblox',count:98,color:'#3b82f6',cat:'roblox'},
+  {icon:'🎨',name:'Graphics',count:204,color:'#f97316',cat:'graphics'},
+  {icon:'💬',name:'Discord',count:76,color:'#5865f2',cat:'discord'},
+  {icon:'💻',name:'Source Code',count:112,color:'#e11d48',cat:'source'},
+  {icon:'🖥️',name:'UI Kits',count:44,color:'#00cccc',cat:'ui'},
+  {icon:'📚',name:'Templates',count:60,color:'#f59e0b',cat:'templates'},
+  {icon:'🕹️',name:'Games',count:128,color:'#a855f7',cat:'games'},
+  {icon:'🤖',name:'AI Tools',count:56,color:'#06b6d4',cat:'ai'},
 ];
-document.getElementById('home-cats').innerHTML = CATS.map(c=>`
-  <a href="shop.html?cat=${c.name.toLowerCase()}" class="cat-card reveal" style="--cat-color:${c.color};--gradient:linear-gradient(135deg,${c.bg}cc,transparent)">
+document.getElementById('cats-grid').innerHTML = CATS.map(c =>
+  `<a href="shop.html?cat=${c.cat}" class="cat-card reveal" style="--ccolor:${c.color}">
     <span class="cat-card-icon">${c.icon}</span>
     <div class="cat-card-name">${c.name}</div>
-    <div class="cat-card-count">${c.count} products</div>
+    <div class="cat-card-cnt">${c.count} products</div>
     <div class="cat-card-bar"></div>
-  </a>`).join('');
+  </a>`
+).join('');
 
-// ── PRODUCTS DATA ──
-const ALL_PRODUCTS = [
-  {id:'gtp', icon:'🎮', bg:'thumb-gaming', title:'Gaming Thumbnail Pack', cat:'Thumbnails', price:299, orig:499, badge:'sale', rating:4.8, reviews:142, sales:320},
-  {id:'mmb', icon:'⛏️', bg:'thumb-minecraft', title:'Minecraft Map Bundle', cat:'Minecraft', price:499, orig:null, badge:'new', rating:4.7, reviews:89, sales:210},
-  {id:'dbp', icon:'💬', bg:'thumb-discord', title:'Discord Bot Premium', cat:'Discord', price:499, orig:null, badge:null, rating:4.7, reviews:56, sales:180},
-  {id:'ytp', icon:'📺', bg:'thumb-youtube', title:'YouTube Thumbnail Pack', cat:'Thumbnails', price:349, orig:null, badge:null, rating:4.6, reviews:231, sales:290},
-  {id:'rgfx',icon:'🎲', bg:'thumb-roblox', title:'Roblox GFX Pack', cat:'Roblox', price:399, orig:699, badge:'sale', rating:4.6, reviews:78, sales:150},
-  {id:'muik',icon:'🖥️', bg:'thumb-ui', title:'Modern UI Kit', cat:'UI Kits', price:599, orig:null, badge:'bestseller', rating:4.9, reviews:112, sales:400},
-  {id:'aig', icon:'🤖', bg:'thumb-gaming', title:'AI Image Generator', cat:'AI Tools', price:699, orig:null, badge:null, rating:4.7, reviews:67, sales:120},
-  {id:'gdc', icon:'🕹️', bg:'thumb-course', title:'Game Dev Course', cat:'Games', price:1499, orig:null, badge:'hot', rating:4.8, reviews:156, sales:340},
-  {id:'pop', icon:'📡', bg:'thumb-overlay', title:'Premium Overlays Pack', cat:'Graphics', price:299, orig:599, badge:'sale', rating:4.6, reviews:45, sales:90},
-  {id:'wtp', icon:'🌐', bg:'thumb-pack', title:'Website Template Pack', cat:'Templates', price:499, orig:null, badge:null, rating:4.8, reviews:93, sales:220},
-  {id:'mctp',icon:'⛏️', bg:'thumb-minecraft', title:'Minecraft Texture Pack', cat:'Minecraft', price:249, orig:null, badge:'new', rating:4.9, reviews:205, sales:510},
-  {id:'twitch',icon:'🎙️', bg:'thumb-twitch', title:'Twitch Overlay Bundle', cat:'Graphics', price:349, orig:699, badge:'sale', rating:4.7, reviews:88, sales:175},
+const ALL_PRODS = [
+  {id:'gtp',  icon:'🎮',bg:'pt-gaming',    title:'Gaming Thumbnail Pack',   cat:'Thumbnails', sub:'25+ Templates',      price:299, orig:499,  badge:'sale',       rating:4.8,reviews:142,sales:320},
+  {id:'mmb',  icon:'⛏️',bg:'pt-minecraft', title:'Minecraft Map Bundle',    cat:'Minecraft',  sub:'5 Custom Maps',      price:499, orig:null, badge:'new',        rating:4.7,reviews:89, sales:210},
+  {id:'dbp',  icon:'💬',bg:'pt-discord',   title:'Discord Bot Premium',     cat:'Discord',    sub:'Full Source Code',   price:499, orig:null, badge:null,         rating:4.7,reviews:56, sales:180},
+  {id:'ytp',  icon:'📺',bg:'pt-youtube',   title:'YouTube Thumbnail Pack',  cat:'Thumbnails', sub:'40+ Templates',      price:349, orig:null, badge:null,         rating:4.6,reviews:231,sales:290},
+  {id:'rgfx', icon:'🎲',bg:'pt-roblox',    title:'Roblox GFX Pack',         cat:'Roblox',     sub:'50+ GFX Assets',     price:399, orig:699,  badge:'sale',       rating:4.6,reviews:78, sales:150},
+  {id:'muik', icon:'🖥️',bg:'pt-ui',        title:'Modern UI Kit',           cat:'UI Kits',    sub:'120+ Components',    price:599, orig:null, badge:'bestseller', rating:4.9,reviews:112,sales:400},
+  {id:'gdc',  icon:'🕹️',bg:'pt-gaming',    title:'Game Dev Course',         cat:'Games',      sub:'40 Hours Content',   price:1499,orig:null, badge:'hot',        rating:4.8,reviews:156,sales:340},
+  {id:'pop',  icon:'📡',bg:'pt-overlay',   title:'Premium Overlays Pack',   cat:'Graphics',   sub:'30+ Stream Overlays',price:299, orig:599,  badge:'sale',       rating:4.6,reviews:45, sales:90},
+  {id:'wtp',  icon:'🌐',bg:'pt-template',  title:'Website Template Pack',   cat:'Templates',  sub:'10 Full Websites',   price:499, orig:null, badge:null,         rating:4.8,reviews:93, sales:220},
+  {id:'mctp', icon:'⛏️',bg:'pt-minecraft', title:'Minecraft Texture Pack',  cat:'Minecraft',  sub:'200+ HD Textures',   price:249, orig:null, badge:'new',        rating:4.9,reviews:205,sales:510},
+  {id:'twitch',icon:'🎙️',bg:'pt-twitch',  title:'Twitch Overlay Bundle',   cat:'Graphics',   sub:'Full Package',       price:349, orig:699,  badge:'sale',       rating:4.7,reviews:88, sales:175},
+  {id:'scmc', icon:'💻',bg:'pt-code',      title:'Minecraft Server Code',   cat:'Source Code',sub:'Full Plugin Bundle',  price:899, orig:null, badge:null,         rating:4.8,reviews:34, sales:67},
 ];
 
-function starHTML(r){const full=Math.floor(r);const half=r%1>=.5?1:0;return '★'.repeat(full)+( half?'½':'')+' ';}
+document.getElementById('trending-grid').innerHTML = ALL_PRODS.slice(0, 6).map(p => makeProductCard(p, false)).join('');
+document.getElementById('new-grid').innerHTML = ALL_PRODS.slice(6).map(p => makeProductCard(p, false)).join('');
 
-function makeProdCard(p){
-  const badgeMap={sale:'badge-sale',new:'badge-new',hot:'badge-hot',bestseller:'badge-bestseller'};
-  return `
-  <div class="product-card reveal" onclick="window.location='product.html?id=${p.id}'" data-filter-target="prod" data-cat="${p.cat}">
-    <div class="prod-thumb" style="height:170px">
-      <div class="prod-thumb-inner ${p.bg}">
-        <div class="thumb-glow" style="background:var(--accent)"></div>
-        <div class="thumb-grid-lines"></div>
-        <span class="thumb-icon">${p.icon}</span>
-        <div class="thumb-title">${p.title}</div>
-        ${p.badge?`<div class="thumb-tag"><span class="badge ${badgeMap[p.badge]||'badge-accent'}">${p.badge.toUpperCase()}</span></div>`:''}
-        <div class="thumb-rating-overlay">⭐ ${p.rating}</div>
-      </div>
-    </div>
-    <div class="product-info">
-      <div class="product-title">${p.title}</div>
-      <div class="product-rating">
-        <span class="stars">${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5-Math.floor(p.rating))}</span>
-        <span class="rating-num">${p.rating}</span>
-        <span class="rating-count">(${p.reviews})</span>
-        <span style="margin-left:auto;font-size:11.5px;color:var(--muted)">🛒 ${p.sales}+</span>
-      </div>
-      <div class="product-price-row">
-        <div>
-          <span class="product-price">₹${p.price}</span>
-          ${p.orig?`<span class="product-original">₹${p.orig}</span>`:''}
-        </div>
-        ${p.orig?`<span class="badge badge-sale">${Math.round((1-p.price/p.orig)*100)}% OFF</span>`:''}
-      </div>
-      <div class="product-actions">
-        <button class="btn btn-primary btn-sm" style="flex:1" onclick="event.stopPropagation();addToCart('${p.id}','${p.title}',${p.price},'${p.icon}','${p.cat}')">Add to Cart</button>
-        <button class="btn btn-secondary btn-sm btn-icon" onclick="event.stopPropagation();toggleWishlist('${p.id}',this)" title="Wishlist">${isWishlisted('${p.id}')?'❤️':'🤍'}</button>
-      </div>
-    </div>
-  </div>`;
-}
-
-document.getElementById('trending-grid').innerHTML = ALL_PRODUCTS.slice(0,6).map(makeProdCard).join('');
-document.getElementById('new-grid').innerHTML = ALL_PRODUCTS.slice(6).map(makeProdCard).join('');
-
-// ── FEATURES ──
-const FEATURES = [
-  {icon:'⚡',title:'Instant Download',desc:'Get your files the second payment is confirmed. No waiting.'},
-  {icon:'🔒',title:'Secure Payments',desc:'SSL encrypted. Pay via UPI, Stripe, PayPal or Razorpay.'},
-  {icon:'💰',title:'90% Revenue Share',desc:'Sellers keep 90% of every sale — the best rate in the industry.'},
-  {icon:'🔄',title:'Free Lifetime Updates',desc:'Buy once, get all future updates for free forever.'},
-  {icon:'🛡️',title:'Money-Back Guarantee',desc:'Not happy? Get a full refund within 7 days, no questions.'},
-  {icon:'🌍',title:'Global Platform',desc:'Products used by creators in 120+ countries worldwide.'},
-  {icon:'⭐',title:'Verified Reviews',desc:'All reviews are from verified buyers — no fake ratings.'},
-  {icon:'🤝',title:'Creator Support',desc:'24/7 support for both buyers and sellers via Discord & email.'},
+const FEATS = [
+  {icon:'⚡',title:'Instant Download',desc:'Files delivered the second payment completes. No waiting, no delays.'},
+  {icon:'🔒',title:'Secure Payments',desc:'SSL encrypted. Pay via UPI, Stripe, PayPal, Razorpay or crypto.'},
+  {icon:'💰',title:'90% Revenue Share',desc:'Sellers keep 90% of every sale — the best rate in the market.'},
+  {icon:'🔄',title:'Free Lifetime Updates',desc:'Buy once and get all future updates for free, forever.'},
+  {icon:'🛡️',title:'7-Day Refund',desc:'Not happy? Full refund within 7 days, no questions asked.'},
+  {icon:'🌍',title:'120+ Countries',desc:'Products used by creators in over 120 countries worldwide.'},
+  {icon:'⭐',title:'Verified Reviews',desc:'Every review is from a confirmed buyer. Zero fake ratings.'},
+  {icon:'🤝',title:'Creator Support',desc:'24/7 dedicated support via Discord and email for all users.'},
 ];
-document.getElementById('features-grid').innerHTML = FEATURES.map(f=>`
-  <div class="glass-card reveal" style="padding:24px;border-radius:16px;border:1px solid var(--border);background:var(--card);transition:all .3s" onmouseover="this.style.borderColor='rgba(var(--accent-rgb),.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-    <div style="font-size:34px;margin-bottom:12px">${f.icon}</div>
-    <div style="font-weight:800;font-size:15px;margin-bottom:7px;font-family:var(--font2)">${f.title}</div>
-    <div style="font-size:13.5px;color:var(--muted);line-height:1.6">${f.desc}</div>
-  </div>`).join('');
+document.getElementById('feats-grid').innerHTML = FEATS.map(f =>
+  `<div class="feat-card reveal">
+    <span class="feat-icon">${f.icon}</span>
+    <div class="feat-title">${f.title}</div>
+    <div class="feat-desc">${f.desc}</div>
+  </div>`
+).join('');
 
-// ── TESTIMONIALS ──
-const TESTI = [
-  {avatar:'🎮',name:'Rahul Sharma',role:'YouTube Creator · 500K subs',text:'PandaStudioX literally changed my channel. I grabbed the Gaming Thumbnail Pack and my CTR went from 4% to 9% in two weeks. The quality is insane.',stars:5},
-  {avatar:'🎨',name:'Priya Kapoor',role:'Graphic Designer',text:'As a designer selling here, I love the 90% revenue share. I made ₹45,000 last month alone. The platform is clean, payouts are fast, no issues ever.',stars:5},
-  {avatar:'⛏️',name:'Alex_MC',role:'Minecraft Server Owner',text:'The Minecraft Map Bundle is worth every rupee. 5 huge maps, all detailed, all compatible. My players love them. Support was super helpful too.',stars:5},
-  {avatar:'💻',name:'DevStudio_J',role:'Full Stack Developer',text:'Bought the Website Template Pack and saved probably 40 hours of work. The code is clean, well-commented and actually works perfectly.',stars:5},
-  {avatar:'🎲',name:'RobloxPro99',role:'Roblox Creator',text:'The GFX Pack is the best I have found anywhere. Not just on this platform — anywhere on the entire internet. 10/10 no hesitation.',stars:5},
-  {avatar:'📡',name:'StreamerKing',role:'Twitch Streamer',text:'Premium overlays look absolutely professional. My stream looks like a big channel now. Setup took 10 minutes. Would buy again and again.',stars:5},
+const TESTIS = [
+  {av:'🎮',name:'Rahul Sharma',role:'YouTube Creator · 500K subs',text:'PandaStudioX changed my channel. I grabbed the Gaming Thumbnail Pack and my CTR went from 4% to 9% in two weeks. The quality is outstanding.',stars:5},
+  {av:'🎨',name:'Priya Kapoor',role:'Graphic Designer & Seller',text:'Selling here is amazing. 90% revenue share is unbeatable. I made ₹45,000 last month alone. Payouts are fast, no issues ever.',stars:5},
+  {av:'⛏️',name:'Alex_MC',role:'Minecraft Server Owner',text:'The Minecraft Map Bundle is worth every rupee. 5 huge maps, all detailed, all compatible with 1.21. My players absolutely love them.',stars:5},
+  {av:'💻',name:'DevStudio_J',role:'Full Stack Developer',text:'Bought the Website Template Pack and saved 40+ hours of work. The code is clean, well-commented and works perfectly out of the box.',stars:5},
+  {av:'🎲',name:'RobloxPro99',role:'Roblox Creator',text:'The GFX Pack is the best I have found anywhere. Not just on this platform — anywhere on the entire internet. 10/10 no hesitation.',stars:5},
+  {av:'📡',name:'StreamerKing',role:'Twitch Streamer · 80K followers',text:'Premium overlays look absolutely professional. My stream looks like a major channel now. Setup took under 10 minutes.',stars:5},
 ];
-document.getElementById('testimonials-grid').innerHTML = TESTI.map(t=>`
-  <div class="testimonial-card reveal">
-    <div class="testimonial-quote">"</div>
-    <p class="testimonial-text">${t.text}</p>
-    <div class="testimonial-author">
-      <div class="testimonial-avatar">${t.avatar}</div>
+document.getElementById('testi-grid').innerHTML = TESTIS.map(t =>
+  `<div class="testi-card reveal">
+    <div class="testi-quote">"</div>
+    <p class="testi-text">${t.text}</p>
+    <div class="testi-author">
+      <div class="testi-avatar">${t.av}</div>
       <div>
-        <div class="testimonial-name">${t.name}</div>
-        <div class="testimonial-role">${t.role}</div>
-        <div class="stars" style="font-size:13px;margin-top:3px">${'★'.repeat(t.stars)}</div>
+        <div style="font-weight:700;font-size:14px">${t.name}</div>
+        <div style="font-size:12px;color:var(--muted)">${t.role}</div>
+        <div class="stars" style="font-size:13px;margin-top:4px">${'★'.repeat(t.stars)}</div>
       </div>
     </div>
-  </div>`).join('');
+  </div>`
+).join('');
 
-// ── PRICING ──
 const PLANS = [
-  {name:'Free',price:'₹0',period:'/forever',desc:'Get started for free',popular:false,
-   features:['Browse all products','5 downloads/month','Basic support','Community access'],
-   nope:['Unlimited downloads','Seller dashboard','AI tools'],cta:'Start Free'},
+  {name:'Free',price:'₹0',period:'/forever',desc:'Get started today',popular:false,
+   feats:['Browse all products','5 downloads/month','Basic support','Community access'],
+   nope:['Unlimited downloads','Seller dashboard'],cta:'Start Free'},
   {name:'Pro',price:'₹499',period:'/month',desc:'For serious creators',popular:true,
-   features:['Unlimited downloads','Seller dashboard','Priority support','Advanced analytics','Early access to new drops','Custom profile page'],
+   feats:['Unlimited downloads','Seller dashboard','Priority support','Advanced analytics','Early access drops','Custom profile page'],
    nope:[],cta:'Go Pro →'},
-  {name:'Seller',price:'₹199',period:'/month',desc:'Sell your own products',popular:false,
-   features:['Upload unlimited products','90% revenue share','Instant UPI/Stripe payouts','Sales analytics','Seller badge & store','API access'],
+  {name:'Seller',price:'₹199',period:'/month',desc:'Sell your products',popular:false,
+   feats:['Upload unlimited products','90% revenue share','UPI/Stripe payouts','Sales analytics','Seller badge & store','API access'],
    nope:[],cta:'Start Selling'},
 ];
-document.getElementById('pricing-grid').innerHTML = PLANS.map(p=>`
-  <div class="pricing-card ${p.popular?'popular':''} reveal">
-    ${p.popular?'<div class="pricing-popular-badge">⭐ MOST POPULAR</div>':''}
-    <div class="pricing-name">${p.name}</div>
-    <div class="pricing-desc">${p.desc}</div>
-    <div class="pricing-price"><span class="pricing-amount">${p.price}</span><span class="pricing-period">${p.period}</span></div>
-    <div class="pricing-billing" style="margin-bottom:22px"> </div>
-    <ul class="pricing-features">
-      ${p.features.map(f=>`<li class="pricing-feature"><span class="pricing-check">✓</span>${f}</li>`).join('')}
-      ${p.nope.map(f=>`<li class="pricing-feature" style="opacity:.4;text-decoration:line-through"><span class="pricing-cross">✕</span>${f}</li>`).join('')}
+document.getElementById('pricing-grid').innerHTML = PLANS.map(p =>
+  `<div class="price-card${p.popular?' popular':''} reveal">
+    ${p.popular?'<div class="price-pop-badge">⭐ POPULAR</div>':''}
+    <div class="price-name">${p.name}</div>
+    <div class="price-desc">${p.desc}</div>
+    <div style="margin-bottom:18px"><span class="price-amount">${p.price}</span><span class="price-period">${p.period}</span></div>
+    <ul class="price-features">
+      ${p.feats.map(f=>`<li class="pf-item"><span class="pf-check">✓</span><span>${f}</span></li>`).join('')}
+      ${p.nope.map(f=>`<li class="pf-item"><span class="pf-x">✕</span><span>${f}</span></li>`).join('')}
     </ul>
-    <button class="btn ${p.popular?'btn-primary':'btn-secondary'} btn-block btn-lg" onclick="showToast({icon:'🚀',title:'${p.name} Plan',desc:'Sign up coming soon!'})"> ${p.cta}</button>
-  </div>`).join('');
+    <button class="btn ${p.popular?'btn-primary':'btn-secondary'} btn-block btn-lg" onclick="showToast('🚀','${p.name} Plan','Sign up to get started!')">${p.cta}</button>
+  </div>`
+).join('');
 </script>
 </body>
 </html>

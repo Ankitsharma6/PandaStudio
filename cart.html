@@ -1,212 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<html lang="en" data-theme="dark">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Cart — PandaStudioX</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>"/>
-<link rel="stylesheet" href="css/style.css"/>
-</head>
-<body>
-<canvas id="bg-canvas"></canvas>
-<div class="page-wrap">
-<div class="ticker-bar"><div class="ticker-inner" id="ticker"></div></div>
-<nav class="navbar">
-  <a class="nav-logo" href="index.html"><div class="nav-logo-emoji">🐼</div>PandaStudioX</a>
-  <div class="nav-links">
-    <a class="nav-link" href="index.html">Home</a>
-    <a class="nav-link" href="shop.html">Shop</a>
-    <a class="nav-link" href="community.html">Community</a>
-    <a class="nav-link" href="blog.html">Blog</a>
-    <a class="nav-link" href="support.html">Contact</a>
-  </div>
-  <div class="nav-search"><input class="search-input" placeholder="Search products..." autocomplete="off"/><span class="nav-search-icon">🔍</span><div class="search-dropdown"></div></div>
-  <div class="nav-right">
-    <div style="position:relative"><button class="theme-btn" id="theme-toggle-btn"></button><div class="theme-panel" id="theme-panel"></div></div>
-    <a href="cart.html" class="cart-btn">🛒<span class="cart-count">0</span></a>
-    <a href="dashboard.html" class="user-btn"><div class="user-avatar">🐼</div><div class="user-info"><div class="user-name">PandaX</div><div class="user-plan">Premium</div></div></a>
-  </div>
-  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+<link rel="stylesheet" href="css/style.css"/></head>
+<body><canvas id="bg-canvas"></canvas><div class="page">
+<div class="ticker"><div class="ticker-track" id="ticker-track"></div></div>
+<nav class="nav">
+  <a class="nav-logo" href="index.html"><div class="logo-icon">🐼</div>PandaStudioX</a>
+  <div class="nav-links"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="shop.html">Shop</a><a class="nav-link" href="community.html">Community</a><a class="nav-link" href="blog.html">Blog</a><a class="nav-link" href="support.html">Contact</a></div>
+  <div class="nav-search"><input class="nav-search-input" placeholder="Search..." autocomplete="off"/><span class="nav-search-icon">🔍</span><div class="search-drop"></div></div>
+  <div class="nav-right"><div style="position:relative"><button class="theme-btn"></button><div class="theme-panel" id="theme-panel"></div></div><a href="cart.html" class="cart-btn">🛒<span class="cart-n">0</span></a><a href="dashboard.html" class="user-btn"><div class="u-avatar">🐼</div><div><div class="u-name">PandaX</div><div class="u-plan">Premium</div></div></a></div>
+  <button class="mob-btn">☰</button>
 </nav>
-<nav class="mobile-nav">
-  <a class="mobile-nav-link" href="index.html">🏠 Home</a>
-  <a class="mobile-nav-link" href="shop.html">🛒 Shop</a>
-  <a class="mobile-nav-link" href="dashboard.html">📊 Dashboard</a>
-</nav>
-
-<div style="padding:32px 24px;max-width:1100px;margin:0 auto;position:relative;z-index:1">
-  <div style="margin-bottom:28px">
-    <span class="section-label">Checkout</span>
-    <h1 style="font-family:var(--font2);font-size:clamp(24px,4vw,36px);font-weight:900;letter-spacing:-1px">Your Cart 🛒</h1>
+<nav class="mob-nav"><a class="mob-link" href="index.html">🏠 Home</a><a class="mob-link" href="shop.html">🛒 Shop</a><a class="mob-link" href="dashboard.html">📊 Dashboard</a></nav>
+<div class="cart-wrap">
+  <div>
+    <div style="margin-bottom:22px"><span class="sec-label">Checkout</span><h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,4vw,34px);font-weight:900;letter-spacing:-1px">Your Cart 🛒</h1></div>
+    <div id="cart-items"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;flex-wrap:wrap;gap:10px">
+      <a href="shop.html" class="btn btn-secondary btn-sm">← Continue Shopping</a>
+      <button class="btn btn-danger btn-sm" onclick="if(confirm('Clear cart?')){clearCart()}">🗑 Clear Cart</button>
+    </div>
+    <div style="margin-top:38px"><h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:800;margin-bottom:16px">You might also like 💡</h3><div class="prods-grid" id="recs-grid"></div></div>
   </div>
-
-  <div class="cart-layout">
-    <!-- Cart items -->
-    <div>
-      <div id="cart-items"></div>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;flex-wrap:wrap;gap:10px">
-        <a href="shop.html" class="btn btn-secondary btn-sm">← Continue Shopping</a>
-        <button class="btn btn-danger btn-sm" onclick="clearAllCart()">🗑 Clear Cart</button>
-      </div>
-
-      <!-- Recommended -->
-      <div style="margin-top:40px">
-        <h3 style="font-family:var(--font2);font-weight:800;font-size:18px;margin-bottom:18px">You might also like 💡</h3>
-        <div class="products-grid" id="recommended-grid"></div>
-      </div>
+  <div class="ord-summary">
+    <div class="ord-title">Order Summary</div>
+    <div id="ord-rows"></div>
+    <div style="margin:14px 0">
+      <div style="font-size:13px;font-weight:700;margin-bottom:7px">🎟 Coupon Code</div>
+      <div class="coup-row"><input class="coup-inp" id="coup-inp" placeholder="e.g. PANDA20" onkeydown="if(event.key==='Enter')tryCoup()"/><button class="btn btn-primary btn-sm" onclick="tryCoup()">Apply</button></div>
+      <div class="coup-hint" id="coup-hint">Try: PANDA20 · GAMER50 · SAVE100 · NEWUSER</div>
     </div>
-
-    <!-- Order summary -->
-    <div class="order-summary">
-      <div class="summary-title">Order Summary</div>
-
-      <div id="summary-rows"></div>
-
-      <!-- Coupon -->
-      <div style="margin:16px 0">
-        <div style="font-size:13.5px;font-weight:700;margin-bottom:8px">🎟 Coupon Code</div>
-        <div class="coupon-wrap">
-          <input class="coupon-input" id="coupon-code" placeholder="e.g. PANDA20" onkeydown="if(event.key==='Enter')tryCoupon()"/>
-          <button class="btn btn-primary btn-sm" onclick="tryCoupon()">Apply</button>
-        </div>
-        <div class="coupon-hint" id="coupon-hint">Try: PANDA20, GAMER50, SAVE100, NEWUSER</div>
-      </div>
-
-      <!-- Payment methods -->
-      <div style="font-size:13.5px;font-weight:700;margin-bottom:10px">💳 Payment Method</div>
-      <div class="payment-methods" id="payment-methods"></div>
-
-      <!-- Trust -->
-      <div class="trust-items">
-        <div class="trust-item"><span>🔒</span> 100% Secure Payment</div>
-        <div class="trust-item"><span>⚡</span> Instant Digital Delivery</div>
-        <div class="trust-item"><span>↩️</span> 7-Day Money Back Guarantee</div>
-      </div>
-
-      <button class="btn btn-primary btn-block btn-lg" style="margin-top:18px" id="checkout-btn" onclick="checkout()">Proceed to Checkout →</button>
-      <div style="text-align:center;font-size:12px;color:var(--muted);margin-top:10px">Secure checkout · No hidden fees</div>
-    </div>
+    <div style="font-size:13px;font-weight:700;margin-bottom:9px">💳 Payment Method</div>
+    <div class="pay-methods" id="pay-methods"></div>
+    <div class="trust-row"><div class="trust-r-item"><span>🔒</span>100% Secure Payment</div><div class="trust-r-item"><span>⚡</span>Instant Digital Delivery</div><div class="trust-r-item"><span>↩️</span>7-Day Money Back Guarantee</div></div>
+    <button class="btn btn-primary btn-block btn-lg" style="margin-top:16px" id="checkout-btn" onclick="doCheckout()">Proceed to Checkout →</button>
+    <div style="text-align:center;font-size:12px;color:var(--muted);margin-top:9px">Secure checkout · No hidden fees</div>
   </div>
 </div>
-
-<footer class="footer">
-<div class="footer-inner">
-  <div class="footer-bottom"><div class="footer-copy">© 2026 PandaStudioX. All rights reserved.</div><div class="footer-version">v3.0</div></div>
+<footer class="footer"><div class="footer-inner"><div class="footer-bottom"><div class="footer-copy">© 2026 PandaStudioX.</div><div style="font-size:12px;color:var(--muted2)">v4.0</div></div></div></footer>
 </div>
-</footer>
-</div>
-<div class="toast-container" id="toast-container"></div>
-<button class="scroll-top" id="scroll-top">↑</button>
-<script src="js/script.js"></script>
+<div class="toast-box" id="toast-box"></div>
+<button class="scroll-top-btn" id="scrollTopBtn">↑</button>
+<script src="js/app.js"></script>
 <script>
-const tickerEl=document.getElementById('ticker');
-tickerEl.innerHTML=[0,1].map(()=>['🔒 Secure checkout','⚡ Instant download','💰 Best prices guaranteed'].map(t=>`<div class="ticker-item">${t}<div class="ticker-dot"></div></div>`).join('')).join('');
-
-const PAYMENT_OPTS = [
-  {id:'upi',  icon:'💳', label:'UPI'},
-  {id:'paytm',icon:'📱', label:'Paytm'},
-  {id:'stripe',icon:'🌐',label:'Stripe'},
-  {id:'paypal',icon:'🅿️',label:'PayPal'},
-];
-let selectedPay='upi';
-
-document.getElementById('payment-methods').innerHTML = PAYMENT_OPTS.map(p=>`
-  <button class="pay-method ${p.id==='upi'?'active':''}" id="pm-${p.id}" onclick="selectPay('${p.id}')">
-    <span class="pay-method-icon">${p.icon}</span>${p.label}
-  </button>`).join('');
-
-function selectPay(id){
-  selectedPay=id;
-  document.querySelectorAll('.pay-method').forEach(b=>b.classList.remove('active'));
-  document.getElementById('pm-'+id).classList.add('active');
+buildTicker(['🔒 Secure checkout','⚡ Instant download','💰 Best prices guaranteed']);
+const PAY_OPTS=[{id:'upi',icon:'💳',label:'UPI'},{id:'paytm',icon:'📱',label:'Paytm'},{id:'stripe',icon:'🌐',label:'Stripe'},{id:'paypal',icon:'🅿️',label:'PayPal'}];
+let selPay='upi';
+document.getElementById('pay-methods').innerHTML=PAY_OPTS.map(p=>`<button class="pay-opt${p.id==='upi'?' active':''}" id="pm-${p.id}" onclick="selPay='${p.id}';document.querySelectorAll('.pay-opt').forEach(b=>b.classList.remove('active'));this.classList.add('active')"><span class="pay-opt-icon">${p.icon}</span>${p.label}</button>`).join('');
+if(!_cart.length){_cart=[{id:'gtp',title:'Gaming Thumbnail Pack',price:299,emoji:'🎮',cat:'Thumbnails',qty:1},{id:'mmb',title:'Minecraft Map Bundle',price:499,emoji:'⛏️',cat:'Minecraft',qty:1}];saveCart();}
+function renderCartPage(){
+  const ci=document.getElementById('cart-items');
+  if(!_cart.length){ci.innerHTML='<div class="empty-cart"><div class="empty-cart-icon">🛒</div><h2 style="font-family:Space Grotesk,sans-serif;font-weight:800;margin-bottom:10px">Cart is empty</h2><p style="color:var(--muted);margin-bottom:22px">Add products from the marketplace.</p><a href="shop.html" class="btn btn-primary btn-lg">Browse Products →</a></div>';document.getElementById('checkout-btn').disabled=true;document.getElementById('checkout-btn').style.opacity='.5';renderSummary();return;}
+  document.getElementById('checkout-btn').disabled=false;document.getElementById('checkout-btn').style.opacity='1';
+  ci.innerHTML=_cart.map(item=>`<div class="cart-item"><div class="cart-thumb pt-gaming" style="font-size:28px;background:linear-gradient(135deg,rgba(var(--accent-rgb),.25),rgba(var(--accent-rgb),.08))">${item.emoji}</div><div style="flex:1;min-width:0"><div class="ci-title">${item.title}</div><div class="ci-meta">Digital Download · Instant Access</div></div><div class="qty-row"><button class="qty-btn" onclick="updateQty('${item.id}',-1)">−</button><span class="qty-n">${item.qty||1}</span><button class="qty-btn" onclick="updateQty('${item.id}',1)">+</button></div><div class="ci-price">₹${((item.price||0)*(item.qty||1)).toLocaleString()}</div><button class="ci-del" onclick="removeFromCart('${item.id}')" title="Remove">✕</button></div>`).join('');
+  renderSummary();setTimeout(initReveal,50);
 }
-
-// Pre-fill with demo items
-if (!cart.length) {
-  cart = [
-    {id:'gtp',  title:'Gaming Thumbnail Pack', price:299, emoji:'🎮', cat:'Thumbnails', qty:1},
-    {id:'mmb',  title:'Minecraft Map Bundle',  price:499, emoji:'⛏️', cat:'Minecraft',  qty:1},
-  ];
-  saveCart();
-}
-
-function renderCartPage() {
-  const container = document.getElementById('cart-items');
-  if (!cart.length) {
-    container.innerHTML=`<div class="empty-cart-wrap"><div class="empty-cart-icon">🛒</div><h2 style="font-family:var(--font2);font-weight:800;margin-bottom:12px">Cart is empty</h2><p style="color:var(--muted);margin-bottom:24px">Add products to your cart to get started.</p><a href="shop.html" class="btn btn-primary btn-lg">Browse Products →</a></div>`;
-    document.getElementById('checkout-btn').disabled=true;
-    document.getElementById('checkout-btn').style.opacity='.5';
-    renderSummary();
-    return;
-  }
-  document.getElementById('checkout-btn').disabled=false;
-  document.getElementById('checkout-btn').style.opacity='1';
-  container.innerHTML = cart.map(item=>`
-    <div class="cart-item">
-      <div class="cart-item-thumb">
-        <div style="width:100%;height:100%;background:linear-gradient(135deg,rgba(var(--accent-rgb),.3),rgba(var(--accent-rgb),.1));display:flex;align-items:center;justify-content:center;font-size:30px">${item.emoji}</div>
-      </div>
-      <div class="cart-item-info">
-        <div class="cart-item-title">${item.title}</div>
-        <div class="cart-item-meta">Digital Download · Instant Access</div>
-      </div>
-      <div class="qty-wrap">
-        <button class="qty-btn" onclick="updateQty('${item.id}',-1)">−</button>
-        <span class="qty-num">${item.qty||1}</span>
-        <button class="qty-btn" onclick="updateQty('${item.id}',1)">+</button>
-      </div>
-      <div class="cart-item-price">₹${((item.price||0)*(item.qty||1)).toLocaleString()}</div>
-      <button class="cart-remove" onclick="removeFromCart('${item.id}')" title="Remove">✕</button>
-    </div>`).join('');
-  renderSummary();
-  setTimeout(()=>initReveal(),50);
-}
-
-function renderSummary() {
-  const {subtotal,discount,total}=getCartTotals();
-  document.getElementById('summary-rows').innerHTML=`
-    <div class="summary-row"><span class="label">Subtotal (${cart.reduce((a,c)=>a+(c.qty||1),0)} items)</span><span>₹${subtotal.toLocaleString()}</span></div>
-    ${discount?`<div class="summary-row discount"><span class="label">Discount (${appliedCoupon})</span><span class="value">−₹${discount.toLocaleString()}</span></div>`:''}
-    <div class="summary-row"><span class="label">Platform Fee</span><span style="color:var(--accent3)">FREE</span></div>
-    <div class="summary-row total"><span>Total</span><span style="color:var(--accent)">₹${total.toLocaleString()}</span></div>`;
-}
-
-function tryCoupon() {
-  const code = document.getElementById('coupon-code').value.trim();
-  const ok = applyCoupon(code);
-  const hint = document.getElementById('coupon-hint');
-  if (ok) { hint.style.color='var(--accent3)'; hint.textContent='✓ '+COUPONS[code.toUpperCase()].label+' applied!'; }
-  else { hint.style.color='var(--danger)'; hint.textContent='✗ Invalid code. Try PANDA20'; }
-  renderSummary();
-}
-
-function clearAllCart() {
-  if(!confirm('Clear your entire cart?')) return;
-  cart=[];appliedCoupon=null;saveCart();renderCartPage();
-}
-
-function checkout() {
-  if(!cart.length) return;
-  const {total}=getCartTotals();
-  const pay=PAYMENT_OPTS.find(p=>p.id===selectedPay);
-  showToast({icon:'💳',title:'Processing Payment',desc:`₹${total.toLocaleString()} via ${pay.label}...`});
-  setTimeout(()=>{
-    showToast({icon:'🎉',title:'Payment Successful!',desc:'Check your email for download links.'});
-    cart=[];appliedCoupon=null;saveCart();renderCartPage();
-  }, 2500);
-}
-
-const RECS = [
-  {id:'rgfx',icon:'🎲',bg:'thumb-roblox',title:'Roblox GFX Pack',cat:'Roblox',price:399,orig:699,badge:'sale',rating:4.6,reviews:78,sales:150},
-  {id:'muik',icon:'🖥️',bg:'thumb-ui',title:'Modern UI Kit',cat:'UI Kits',price:599,orig:null,badge:'bestseller',rating:4.9,reviews:112,sales:400},
-  {id:'wtp',icon:'🌐',bg:'thumb-pack',title:'Website Template Pack',cat:'Templates',price:499,orig:null,badge:null,rating:4.8,reviews:93,sales:220},
-];
-document.getElementById('recommended-grid').innerHTML = RECS.map(p=>`
-  <div class="product-card reveal" onclick="location='product.html?id=${p.id}'">
-    <div class="prod-thumb" style="height:155px"><div class="prod-thumb-inner ${p.bg}"><div class="thumb-glow"></div><div class="thumb-grid-lines"></div><span class="thumb-icon">${p.icon}</span>${p.badge?`<div class="thumb-tag"><span class="badge badge-${p.badge}">${p.badge.toUpperCase()}</span></div>`:''}<div class="thumb-rating-overlay">⭐ ${p.rating}</div></div></div>
-    <div class="product-info"><div class="product-title">${p.title}</div><div class="product-price-row"><span class="product-price">₹${p.price}</span>${p.orig?`<span class="product-original">₹${p.orig}</span>`:''}</div><div class="product-actions"><button class="btn btn-primary btn-sm" style="flex:1" onclick="event.stopPropagation();addToCart('${p.id}','${p.title}',${p.price},'${p.icon}','${p.cat}');renderCartPage()">Add to Cart</button></div></div>
-  </div>`).join('');
-
+function renderSummary(){const{subtotal,discount,total}=getCartTotals();document.getElementById('ord-rows').innerHTML=`<div class="ord-row"><span class="lbl">Subtotal (${_cart.reduce((a,c)=>a+(c.qty||1),0)} items)</span><span>₹${subtotal.toLocaleString()}</span></div>${discount?`<div class="ord-row disc"><span class="lbl">Discount (${_coupon})</span><span class="val">−₹${discount.toLocaleString()}</span></div>`:''}<div class="ord-row"><span class="lbl">Platform Fee</span><span style="color:var(--accent3)">FREE</span></div><div class="ord-row total"><span>Total</span><span style="color:var(--accent)">₹${total.toLocaleString()}</span></div>`;}
+function tryCoup(){const code=document.getElementById('coup-inp').value.trim();const ok=tryApplyCoupon(code);const hint=document.getElementById('coup-hint');if(ok){hint.style.color='var(--accent3)';hint.textContent='✓ '+COUPONS[code.toUpperCase()].label+' applied!';}else{hint.style.color='var(--danger)';hint.textContent='✗ Invalid code. Try PANDA20';}renderSummary();}
+function doCheckout(){if(!_cart.length)return;const{total}=getCartTotals();const pay=PAY_OPTS.find(p=>p.id===selPay);showToast('💳','Processing...','₹'+total.toLocaleString()+' via '+pay.label);setTimeout(()=>{showToast('🎉','Payment Successful!','Check your email for download links.');clearCart();},2500);}
+const RECS=[{id:'rgfx',icon:'🎲',bg:'pt-roblox',title:'Roblox GFX Pack',cat:'Roblox',sub:'50+ Assets',price:399,orig:699,badge:'sale',rating:4.6,reviews:78,sales:150},{id:'muik',icon:'🖥️',bg:'pt-ui',title:'Modern UI Kit',cat:'UI Kits',sub:'120+ Components',price:599,orig:null,badge:'bestseller',rating:4.9,reviews:112,sales:400},{id:'wtp',icon:'🌐',bg:'pt-template',title:'Website Template Pack',cat:'Templates',sub:'10 Full Sites',price:499,orig:null,badge:null,rating:4.8,reviews:93,sales:220}];
+document.getElementById('recs-grid').innerHTML=RECS.map(p=>makeProductCard(p,false)).join('');
 renderCartPage();
-</script>
-</body>
-</html>
+window._cartRender=renderCartPage;
+</script></body></html>
